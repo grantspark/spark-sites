@@ -1,0 +1,58 @@
+# .vip/config.yaml
+# VIP configuration for Spark Sites
+# Git-tracked, shared by all collaborators
+
+version: 1
+
+# === BUSINESS INFO ===
+business:
+  name: Spark Sites
+  type: agency
+  location: Lakeland, FL
+  multi_offer: true
+
+# === SESSION (Team Defaults) ===
+session:
+  auto_load_reference: true
+  show_context_tips: true
+  warn_at_context_pct: 75
+
+# === OFFERS ===
+offers:
+  - websites      # Primary entry point
+  - seo
+  - google-ads
+  - facebook-ads
+  - social
+  - consulting
+  - influencer
+  - education     # Coming soon
+
+# === INFRASTRUCTURE ===
+infrastructure:
+  railway:
+    project_id: null
+  postiz:
+    api_url: null
+    api_key_ref: null
+  r2:
+    bucket: null
+    public_url: null
+
+# === MCP SERVERS ===
+mcps:
+  apify:
+    required_for: [organic, think]
+    setup_guide: ".claude/skills/organic/references/apify-setup.md"
+
+# === CONTENT ===
+content:
+  default_channels: []
+  require_review: true
+
+# === SKILL PREFERENCES ===
+skills:
+  ads:
+    default_format: static
+  think:
+    auto_create_tasks: false

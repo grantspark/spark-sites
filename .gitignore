@@ -1,0 +1,19 @@
+# Secrets
+.env
+*.env.local
+
+# Session state (not shared)
+.vip/local.yaml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (if used)
+node_modules/
