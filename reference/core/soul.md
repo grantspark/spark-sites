@@ -39,4 +39,4 @@ Three questions to check if we're on track:
 
 - **2004**: Grant starts building websites and learning technology
 - **2013**: Spark Sites founded in Lakeland, FL
-- **Present**: Growing into a full-service growth marketing agency with education as a core differentiator
+- **Present**: Your growth partner — strategy, education, and execution for small businesses. Websites are one tool, not the identity

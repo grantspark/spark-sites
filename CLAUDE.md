@@ -1,6 +1,7 @@
 # Spark Sites
 
-**Growth marketing agency with websites at the core. High-end solutions for entrepreneurs.**
+**Spark — Your growth partner. Strategy, education, and execution for entrepreneurs.**
+**Spark Sites — The website entry point. High-end sites made accessible.**
 
 ---
 
@@ -19,7 +20,7 @@ claude
 
 ## The Business
 
-**What:** Full-service growth marketing agency based in Lakeland, FL
+**What:** Growth partner for small businesses — strategy, education, and execution. Based in Lakeland, FL
 **Who:** Small business owners and entrepreneurs who want professional digital presence without enterprise pricing
 **Why:** Educate, Empower, Encourage — we believe the more clients understand, the more they value what we do
 

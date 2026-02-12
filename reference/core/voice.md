@@ -38,6 +38,7 @@ updated: 2026-02-11
 - Pressure tactics ("Act now before it's too late")
 - Vague promises ("We'll take your business to the next level")
 - Anything that makes the client feel stupid
+- "Vendor," "provider," "agency" when describing our relationship — we're a growth partner, not a service counter
 
 ## Writing Style
 

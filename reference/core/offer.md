@@ -5,23 +5,24 @@ updated: 2026-02-11
 ---
 # Offer (Brand Level)
 
-## What Spark Sites Is
+## What Spark Is
 
-A growth marketing agency with websites at the core. We build the digital foundation, then help businesses grow through SEO, ads, social, and education.
+Your growth partner. We combine strategy, education, and execution to help small businesses grow — not just get a deliverable. Websites, SEO, ads, social, and AI are tools we use. The partnership is the product.
 
 **Location:** Lakeland, Florida
 
-**Positioning:** The premier Lakeland web design and digital marketing company — high-end solutions made accessible to entrepreneurs.
+**Positioning:** The growth partner for entrepreneurs who want high-end marketing with real understanding — not just a vendor who disappears after the invoice.
 
 ## The Model
 
 **Entry points:**
-1. **Websites** (primary) → Discovery call → Upsell to marketing services
-2. **SEO / AI optimization** → Leads to ads management
-3. **Education** (webinars, courses) → Demonstrates expertise → Upsell to services
-4. **Influencer events** → Soft openings for local businesses
+1. **Websites** → Discovery call → Ongoing growth partnership
+2. **SEO / AI optimization** → Leads to broader marketing services
+3. **Strategy sessions** → Direct entry for businesses that need direction first
+4. **Education** (webinars, courses) → Demonstrates expertise → Partnership
+5. **Influencer events** → Soft openings for local businesses
 
-**Core insight:** Websites are the wedge. Once we build their site, the discovery call surfaces what else they need. Most clients don't know what marketing services would help them until we ask the right questions.
+**Core insight:** The partnership is the model. Some clients enter through a website, others through a strategy session, others through education. Every entry point leads to the same place — an ongoing growth relationship where we strategize, execute, and educate together.
 
 ## Services Overview
 
