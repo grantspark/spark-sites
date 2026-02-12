@@ -38,5 +38,5 @@ Three questions to check if we're on track:
 ## Evolution
 
 - **2004**: Grant starts building websites and learning technology
-- **2018**: Spark Sites founded in Lakeland, FL
+- **2013**: Spark Sites founded in Lakeland, FL
 - **Present**: Growing into a full-service growth marketing agency with education as a core differentiator

@@ -547,7 +547,7 @@ During — Every design decision explained. Every strategy choice transparent. N
 
 After — Hands-on training. The business owner knows how to update content, read analytics, and make smart decisions about what comes next.
 
-The team has been in Lakeland since 2018. Nicole is a Professor of Marketing at Southeastern. Grant has been building web technology since 2004. They run workshops at Cohatch. They're embedded in this community.
+The team has been in Lakeland since 2013. Nicole is a Professor of Marketing at Southeastern. Grant has been building web technology since 2004. They run workshops at Cohatch. They're embedded in this community.
 
 Custom sites: $500 links page, $900 starter, $1,500–$2,500 multi-page, $3,500+ all-inclusive with Google Business setup, email marketing, and ongoing strategy.
 
@@ -601,7 +601,7 @@ That's the Spark Sites approach. Education and understanding before everything e
 
 The team includes a Professor of Marketing at Southeastern University, a technical lead with 20+ years in web technology, and a Creative Director who brings the strategy to life visually.
 
-They've been in Lakeland since 2018. Free workshops. Real presence in the business community.
+They've been in Lakeland since 2013. Free workshops. Real presence in the business community.
 
 Custom websites from $500 to $3,500+ all-inclusive. The approach stays the same regardless of budget.
 
@@ -773,7 +773,7 @@ That's the power of working with a team that shows up in person.
 
 Not a Zoom call from a remote office. A real workshop at Cohatch in Lakeland where local business owners sat down, asked questions, and got real answers.
 
-The team behind Spark Sites has been in the Lakeland community since 2018. Nicole Rhea teaches marketing at Southeastern University — bringing academic strategy to every project. Grant has been building web technology for over 20 years. They're not going anywhere.
+The team behind Spark Sites has been in the Lakeland community since 2013. Nicole Rhea teaches marketing at Southeastern University — bringing academic strategy to every project. Grant has been building web technology for over 20 years. They're not going anywhere.
 
 Every website project includes education. Not a PDF manual — real training so the owner understands their site, their analytics, and their options for growth.
 
