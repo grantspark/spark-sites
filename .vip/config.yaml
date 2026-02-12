@@ -50,6 +50,22 @@ content:
   default_channels: []
   require_review: true
 
+# === TOOLS ===
+tools:
+  gemini:
+    status: true
+    notes: "GOOGLE_API_KEY configured"
+    last_checked: 2026-02-11
+  whisper:
+    status: true
+    method: openai-api
+    notes: "OPENAI_API_KEY configured as system env var"
+    last_checked: 2026-02-11
+  grok:
+    status: true
+    notes: "XAI_API_KEY configured as system env var"
+    last_checked: 2026-02-11
+
 # === SKILL PREFERENCES ===
 skills:
   ads:
