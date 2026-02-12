@@ -104,6 +104,7 @@ spark-sites/
 **Core Values:** Educate, Empower, Encourage
 
 **Location:** Lakeland, FL
+**Parent brand domain:** startwithspark.com
 
 ---
 

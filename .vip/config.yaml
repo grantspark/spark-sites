@@ -54,8 +54,12 @@ content:
 tools:
   gemini:
     status: true
-    notes: "GOOGLE_API_KEY configured"
-    last_checked: 2026-02-11
+    notes: "GOOGLE_API_KEY configured, paid tier active"
+    last_checked: 2026-02-12
+  nano_banana:
+    status: true
+    notes: "Python 3.14.3 + google-genai + Pillow installed. Paid tier. Model: gemini-3-pro-image-preview"
+    last_checked: 2026-02-12
   whisper:
     status: true
     method: openai-api
