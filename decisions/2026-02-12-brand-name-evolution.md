@@ -1,7 +1,7 @@
 ---
 type: decision
 date: 2026-02-12
-status: proposed
+status: accepted
 linked_research:
   - research/2026-02-11-ai-disruption-web-design-claude-code.md
 ---
@@ -96,12 +96,53 @@ The business is working. Retainers are growing. The name hasn't held you back ye
 
 ## Decision
 
-**Not yet decided.** Captured for further discussion.
+**We chose: Option C — "Spark" as parent brand, "Spark Sites" preserved as sub-brand.**
 
-## Open Questions
+The business has already outgrown the name, but the name still has value. Rather than kill brand equity (Option B) or pretend "Sites" still describes us (Option A) or wait and lose positioning time (Option D), we're committing to a parent brand architecture that matches reality.
 
-1. What does Nicole think about the brand direction?
-2. What's the actual cost of a rebrand (legal, domain, signage)?
-3. How much SEO traffic comes from "Spark Sites" specifically vs. service keywords?
-4. Are competitors in Lakeland repositioning yet?
-5. Could we test a positioning shift before committing to a name change?
+"Spark Sites" stays as the website service — it has SEO equity, client recognition, and still describes a real offer. But the parent brand leads. Strategy, education, AI consulting, and growth marketing all live under the parent. The website becomes one entry point among many, not the identity.
+
+### Constraints
+
+- **Parent brand name is TBD.** Could be "Spark Growth," "Spark Marketing," or just "Spark." This is a separate decision — don't rush it.
+- **Sub-brands are TBD.** Do not fragment into Spark AI, Spark Ads, Spark Strategy, etc. until the parent brand is established and clear. Build the parent first.
+- **Spark Sites is preserved.** Not retired, not renamed. It becomes a sub-brand under the parent.
+
+### Sequencing
+
+1. Decide the parent brand name (separate decision)
+2. Build the parent brand identity (positioning, messaging, visual)
+3. Soft-launch — start leading with parent brand in new conversations
+4. Only then consider whether individual services need sub-brand names
+
+## Consequences
+
+### What Becomes Easier
+- Leading with strategy and education in sales conversations
+- Positioning for AI consulting and new services
+- Marketing the full scope of what we do
+- Future service additions slot in naturally under the parent
+
+### What Becomes Harder
+- Managing two brand layers (parent + Spark Sites)
+- Deciding where each piece of marketing lives
+- Explaining the relationship to existing clients during transition
+
+### What We're Accepting
+- Short-term complexity while the parent brand gets established
+- The parent brand name decision is still ahead of us
+- This is a multi-month evolution, not a flip-the-switch rebrand
+
+## What Changes
+
+`core/offer.md` needs updating to reflect the parent brand architecture — the brand-level thesis should describe the parent, not just websites. `reference/domain/product-ladder.md` needs a new top layer showing the parent brand above the current service map. A new decision file will be needed for the parent brand name itself.
+
+Outside reference: no immediate changes to legal, domains, or collateral until the parent brand name is decided.
+
+## Open Questions (Remaining)
+
+1. What should the parent brand be called? (Next decision)
+2. What does Nicole think about the direction?
+3. How do we introduce the parent brand to existing clients?
+4. Does the parent brand need its own website, or does sparkmysite.com evolve?
+5. What's the timeline for soft-launching the parent brand?
