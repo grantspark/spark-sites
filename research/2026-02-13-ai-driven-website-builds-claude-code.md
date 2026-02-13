@@ -192,6 +192,53 @@ Current website pricing: $500-$3,500+. If AI cuts build time by 70%:
 - [ ] End-to-end test: reference files → content generation → MCP push → live WordPress page
 - [ ] What's the base theme/setup step look like? Can it be templatized per client type?
 
+## Projected Workflow: Claude Code + Pressable MCP
+
+### One-Time Agency Setup (Do Once)
+1. Pressable account with annual plan
+2. Configure Claude Code to connect to Pressable's MCP
+3. Pick base theme (Kadence, or eventually Claude Cowork-generated)
+
+### Per-Client Minimum Steps
+
+| Step | Where | Who | Automatable? |
+|------|-------|-----|-------------|
+| 1. Spin up new WordPress install | Pressable dashboard | You | Possibly via API |
+| 2. Toggle MCP on | Pressable dashboard | You | Unknown |
+| 3. Install theme + SEO plugin | Dashboard or MCP | You | Likely via MCP |
+| 4. Generate content from reference/conversation | Claude Code | You + AI | This is the AI part |
+| 5. Push content to site via MCP | Claude Code | AI | Yes — the whole point |
+| 6. Client reviews, iterate | Claude Code | You + client | Partially |
+| 7. Point domain | Pressable dashboard | You | Manual |
+
+### Analysis
+
+**Minimum manual touchpoints:** 2 dashboard visits (spin up install, point domain). Everything else happens in Claude Code.
+
+**Key unknown:** Steps 1-3. If Pressable exposes site provisioning through their API or MCP, the entire build could happen without leaving Claude Code except to point the domain. If not, there's 5-10 minutes of dashboard setup per client.
+
+**The critical test:** Step 4→5 — does generating content from reference files and pushing via MCP actually work end-to-end? This is the first thing to verify with a test site.
+
+### Claude Cowork Detail
+
+Claude Cowork (announced Feb 13, 2026) is a WordPress.com plugin in developer preview:
+
+**Workflow:**
+1. Describe site in conversation (e.g., `/create-site A website for my fitness coaching business...`)
+2. Claude asks clarifying questions
+3. Presents multiple design options (fonts, colors, styling)
+4. Iterate until satisfied
+5. Generates a working Gutenberg block theme in minutes
+
+**Three skills:**
+- **Site Specification** — gathers context about the site
+- **Site Design** — creates design options
+- **Theme Creation** — generates block theme following best practices
+
+**Current state:** Deploys to WordPress Studio (local dev), but output theme works on any WordPress site including Pressable. Requires GitHub clone to access. "Rapid development and changing constantly."
+
+**Why it matters:** Could solve the "base theme" gap in the Pressable workflow. Instead of picking a pre-made theme (step 3 above), generate a custom theme conversationally — both theme AND content via AI.
+
 ### Needs Internal Discussion
 - [ ] Do we tier (brochure vs. full CMS) or go all-in on Pressable for everything?
 - [ ] How do we price the transition — same rates, new packaging?
