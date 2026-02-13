@@ -69,6 +69,14 @@ tools:
     status: true
     notes: "XAI_API_KEY configured as system env var"
     last_checked: 2026-02-11
+  pnpm:
+    status: true
+    notes: "v10.29.3, installed globally via npm"
+    last_checked: 2026-02-12
+  gh_cli:
+    status: true
+    notes: "Authenticated as grantspark via HTTPS"
+    last_checked: 2026-02-12
 
 # === SKILL PREFERENCES ===
 skills:
