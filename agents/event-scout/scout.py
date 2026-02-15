@@ -259,17 +259,16 @@ def deduplicate(events: list[dict]) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def generate_digest(events: list[dict], config: dict) -> str:
-    """Generate a markdown digest of scored events."""
+    """Generate a markdown digest of scored events (high + medium only)."""
     today = datetime.now().strftime("%Y-%m-%d")
     date_from, date_to = get_date_range()
 
-    # Sort: high first, then medium, then low
-    score_order = {"high": 0, "medium": 1, "low": 2, "unscored": 3}
-    events.sort(key=lambda e: score_order.get(e.get("score", "low"), 3))
-
+    # Sort: high first, then medium
+    score_order = {"high": 0, "medium": 1}
     high = [e for e in events if e.get("score") == "high"]
     medium = [e for e in events if e.get("score") == "medium"]
-    low = [e for e in events if e.get("score") == "low"]
+    kept = high + medium
+    dropped = len(events) - len(kept)
 
     lines = [
         f"---",
@@ -284,7 +283,7 @@ def generate_digest(events: list[dict], config: dict) -> str:
         f"**Business:** {config['business_name']}",
         f"**Geography:** {', '.join(config['location']['cities'])}",
         f"**Date range:** {date_from} to {date_to}",
-        f"**Total events found:** {len(events)} ({len(high)} high, {len(medium)} medium, {len(low)} low relevance)",
+        f"**Events:** {len(kept)} relevant ({len(high)} high, {len(medium)} medium) — {dropped} low-relevance filtered out",
         f"",
     ]
 
@@ -304,13 +303,11 @@ def generate_digest(events: list[dict], config: dict) -> str:
         for event in medium:
             lines.extend(_format_event(event))
 
-    if low:
+    if not kept:
         lines.append("---")
         lines.append("")
-        lines.append("## Low Relevance — Probably Skip")
+        lines.append("*No high or medium relevance events found this week.*")
         lines.append("")
-        for event in low:
-            lines.extend(_format_event_compact(event))
 
     return "\n".join(lines)
 
@@ -338,13 +335,6 @@ def _format_event(event: dict) -> list[str]:
         lines.append("")
     return lines
 
-
-def _format_event_compact(event: dict) -> list[str]:
-    """Format a single event compactly (for low-relevance)."""
-    url_part = f" — [link]({event['url']})" if event.get("url") else ""
-    return [
-        f"- **{event['title']}** | {event.get('date', 'TBD')} | {event.get('location', 'TBD')}{url_part}",
-    ]
 
 
 # ---------------------------------------------------------------------------
@@ -444,22 +434,14 @@ def main():
     print("\n[4/4] Generating digest...")
     digest = generate_digest(scored_events, config)
 
-    # Save markdown — dated archive + fixed "latest" for Zapier/N8N triggers
-    today = datetime.now().strftime("%Y-%m-%d")
+    # Save markdown — single file, overwritten each week (Zapier/N8N watches this)
     output_dir = Path(__file__).parent / config["output"]["markdown_path"].replace("agents/event-scout/", "")
     output_dir.mkdir(parents=True, exist_ok=True)
-
-    # Dated archive (history)
-    output_path = output_dir / f"digest-{today}.md"
+    output_path = output_dir / "digest-latest.md"
     output_path.write_text(digest, encoding="utf-8")
-
-    # Fixed filename (Zapier watches this file for changes)
-    latest_path = output_dir / "digest-latest.md"
-    latest_path.write_text(digest, encoding="utf-8")
 
     print(f"\n{'=' * 60}")
     print(f"DONE! Digest saved to: {output_path}")
-    print(f"      Latest copy at:  {latest_path}")
 
     high_count = len([e for e in scored_events if e.get("score") == "high"])
     med_count = len([e for e in scored_events if e.get("score") == "medium"])
