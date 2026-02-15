@@ -70,7 +70,10 @@ def scrape_event_scraper_pro(client: ApifyClient, config: dict) -> list[dict]:
     }
 
     print(f"  Scraping Meetup/Eventbrite/Lu.ma for {', '.join(cities)}...")
-    run = client.actor(source_config["actor"]).call(run_input=actor_input)
+    run = client.actor(source_config["actor"]).call(
+        run_input=actor_input,
+        timeout_secs=180,
+    )
     items = list(client.dataset(run["defaultDatasetId"]).iterate_items())
     print(f"  Found {len(items)} events from Event Scraper Pro")
     return items
@@ -88,7 +91,11 @@ def scrape_facebook_events(client: ApifyClient, config: dict) -> list[dict]:
     }
 
     print(f"  Scraping Facebook Events...")
-    run = client.actor(source_config["actor"]).call(run_input=actor_input)
+    # Timeout after 3 minutes — Facebook scraper paginates aggressively
+    run = client.actor(source_config["actor"]).call(
+        run_input=actor_input,
+        timeout_secs=180,
+    )
     items = list(client.dataset(run["defaultDatasetId"]).iterate_items())
     print(f"  Found {len(items)} events from Facebook")
     return items
@@ -243,7 +250,7 @@ def deduplicate(events: list[dict]) -> list[dict]:
         if key not in seen:
             seen.add(key)
             unique.append(event)
-    print(f"  Deduplicated: {len(events)} → {len(unique)} unique events")
+    print(f"  Deduplicated: {len(events)} -> {len(unique)} unique events")
     return unique
 
 

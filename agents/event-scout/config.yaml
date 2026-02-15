@@ -93,13 +93,10 @@ sources:
     actor: "apify/facebook-events-scraper"
     enabled: true
     search_queries:
-      - "business networking Lakeland"
-      - "entrepreneur Tampa"
-      - "small business Orlando"
-      - "women business networking Florida"
-      - "startup meetup Tampa Bay"
-      - "coworking event Lakeland"
-    max_events: 50
+      - "business networking Lakeland FL"
+      - "entrepreneur networking Tampa FL"
+      - "small business networking Orlando FL"
+    max_events: 30
 
 # --- Schedule ---
 schedule:
