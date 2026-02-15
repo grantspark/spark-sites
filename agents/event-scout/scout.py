@@ -143,13 +143,24 @@ def normalize_event(raw: dict, source: str) -> dict:
             "source": source,
         }
     elif source == "facebook":
+        # Extract clean location from Facebook's nested place object
+        place = raw.get("location") or raw.get("place") or {}
+        if isinstance(place, dict):
+            place_name = place.get("name") or ""
+            street = place.get("streetAddress") or ""
+            city = place.get("city") or place.get("contextualName") or ""
+            location_parts = [p for p in [place_name, street, city] if p]
+            location = ", ".join(location_parts)
+        else:
+            location = str(place) if place else ""
+
         return {
             "title": raw.get("name") or raw.get("title", "Untitled"),
             "description": raw.get("description", ""),
-            "date": raw.get("startDate") or raw.get("date", ""),
+            "date": raw.get("dateTimeSentence") or raw.get("startDate") or raw.get("date", ""),
             "time": raw.get("startTime") or raw.get("time", ""),
-            "location": raw.get("location") or raw.get("place", {}).get("name", ""),
-            "city": raw.get("city", ""),
+            "location": location,
+            "city": city if isinstance(place, dict) else "",
             "url": raw.get("url", ""),
             "organizer": raw.get("organizer", {}).get("name", "") if isinstance(raw.get("organizer"), dict) else raw.get("organizer", ""),
             "attendees": raw.get("usersInterested", 0) or raw.get("usersGoing", 0),
@@ -445,12 +456,13 @@ def main():
     cutoff = today + timedelta(days=21)
     future_events = []
     for event in all_raw_events:
-        event_date_str = str(event.get("date", ""))[:10]
+        event_date_str = str(event.get("date", "")).strip()
         if not event_date_str:
             future_events.append(event)  # Keep events with no date (let AI judge)
             continue
         try:
-            event_date = dateparser.parse(event_date_str)
+            # dateparser.parse handles many formats: ISO, "Thu, 4 Dec 2025", "Tue, Feb 17 at 8:00 AM EST", etc.
+            event_date = dateparser.parse(event_date_str, fuzzy=True)
             if event_date and today.date() <= event_date.date() <= cutoff.date():
                 future_events.append(event)
         except (ValueError, TypeError):
