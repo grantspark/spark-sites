@@ -176,7 +176,7 @@ def score_events_with_ai(events: list[dict], config: dict) -> list[dict]:
         for j, event in enumerate(batch):
             events_text += f"\n[Event {j+1}]\n"
             events_text += f"Title: {event['title']}\n"
-            events_text += f"Description: {event['description'][:500]}\n"
+            events_text += f"Description: {(event['description'] or '')[:500]}\n"
             events_text += f"Location: {event['location']}\n"
             events_text += f"Organizer: {event['organizer']}\n"
 
