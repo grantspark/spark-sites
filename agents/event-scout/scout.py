@@ -36,9 +36,9 @@ def load_config(config_path: str = None) -> dict:
 
 
 def get_date_range() -> tuple[str, str]:
-    """Return (start_date, end_date) for next 2 weeks."""
+    """Return (start_date, end_date) for next 3 weeks."""
     today = datetime.now()
-    end = today + timedelta(days=14)
+    end = today + timedelta(days=21)
     return today.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d")
 
 
@@ -311,6 +311,7 @@ def generate_digest(events: list[dict], config: dict) -> str:
 def _format_event_ranked(event: dict, rank: int) -> list[str]:
     """Format a ranked event for the digest."""
     score = event.get("score", 0)
+    platform = event.get("platform", "Unknown")
     lines = [
         f"### #{rank}. {event['title']} (Score: {score}/10)",
         f"",
@@ -320,10 +321,13 @@ def _format_event_ranked(event: dict, rank: int) -> list[str]:
         f"- **Organizer:** {event.get('organizer', 'Unknown')}",
         f"- **Attendees:** {event.get('attendees', 'N/A')}",
         f"- **Price:** {event.get('price', 'See event')}",
+        f"- **Found on:** {platform}",
         f"- **Best for:** {', '.join(event.get('avatar_match', [])) or 'General'}",
     ]
     if event.get("url"):
         lines.append(f"- **Link:** {event['url']}")
+    else:
+        lines.append(f"- **Link:** No direct link — search for this event on {platform}")
     lines.append("")
     return lines
 
@@ -414,16 +418,36 @@ def main():
 
     print(f"\n  Total raw events: {len(all_raw_events)}")
 
+    # --- Filter to future events within 21 days ---
+    print("\n[2/5] Filtering to future events (next 21 days)...")
+    date_from, date_to = get_date_range()
+    today = datetime.now()
+    cutoff = today + timedelta(days=21)
+    future_events = []
+    for event in all_raw_events:
+        event_date_str = str(event.get("date", ""))[:10]
+        if not event_date_str:
+            future_events.append(event)  # Keep events with no date (let AI judge)
+            continue
+        try:
+            event_date = dateparser.parse(event_date_str)
+            if event_date and today.date() <= event_date.date() <= cutoff.date():
+                future_events.append(event)
+        except (ValueError, TypeError):
+            future_events.append(event)  # Keep unparseable dates
+    dropped_dates = len(all_raw_events) - len(future_events)
+    print(f"  Kept {len(future_events)} future events, dropped {dropped_dates} past/out-of-range")
+
     # --- Deduplicate ---
-    print("\n[2/4] Deduplicating...")
-    unique_events = deduplicate(all_raw_events)
+    print("\n[3/5] Deduplicating...")
+    unique_events = deduplicate(future_events)
 
     # --- AI Score ---
-    print("\n[3/4] Scoring events against target avatars...")
+    print("\n[4/5] Scoring events against target avatars...")
     scored_events = score_events_with_ai(unique_events, config)
 
     # --- Generate digest ---
-    print("\n[4/4] Generating digest...")
+    print("\n[5/5] Generating digest...")
     digest = generate_digest(scored_events, config)
 
     # Save markdown — single file, overwritten each week (Zapier/N8N watches this)
