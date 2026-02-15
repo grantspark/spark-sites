@@ -108,18 +108,38 @@ def scrape_facebook_events(client: ApifyClient, config: dict) -> list[dict]:
 def normalize_event(raw: dict, source: str) -> dict:
     """Normalize a raw event from any source into a common schema."""
     if source == "event_scraper_pro":
+        # Build location from available fields
+        venue = raw.get("venueName") or ""
+        address = raw.get("address") or ""
+        city = raw.get("city") or ""
+        location_parts = [p for p in [venue, address, city] if p]
+        location = ", ".join(location_parts) or ""
+
+        # Build price from ticketStatus / priceMin / priceMax
+        ticket_status = raw.get("ticketStatus", "")
+        price_min = raw.get("priceMin")
+        price_max = raw.get("priceMax")
+        if ticket_status == "free" or (not price_min and not price_max):
+            price = "Free"
+        elif price_min and price_max and price_min != price_max:
+            price = f"${price_min}-${price_max}"
+        elif price_min:
+            price = f"${price_min}"
+        else:
+            price = "See event"
+
         return {
             "title": raw.get("title") or raw.get("name", "Untitled"),
             "description": raw.get("description", ""),
-            "date": raw.get("date") or raw.get("startDate", ""),
-            "time": raw.get("time") or raw.get("startTime", ""),
-            "location": raw.get("location") or raw.get("venue", ""),
-            "city": raw.get("city", ""),
-            "url": raw.get("url") or raw.get("link", ""),
-            "organizer": raw.get("organizer") or raw.get("group", ""),
-            "attendees": raw.get("attendees") or raw.get("rsvpCount", 0),
-            "price": raw.get("price", "Free"),
-            "platform": raw.get("platform") or raw.get("source", source),
+            "date": raw.get("startsAt") or raw.get("date", ""),
+            "time": "",  # startsAt includes time as ISO timestamp
+            "location": location,
+            "city": city,
+            "url": raw.get("eventUrl") or raw.get("ticketUrl") or "",
+            "organizer": raw.get("organizerName") or "",
+            "attendees": raw.get("rsvpCount") or raw.get("capacity") or 0,
+            "price": price,
+            "platform": raw.get("platform") or source,
             "source": source,
         }
     elif source == "facebook":
