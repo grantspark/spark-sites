@@ -145,12 +145,12 @@ def normalize_event(raw: dict, source: str) -> dict:
 # ---------------------------------------------------------------------------
 
 def score_events_with_ai(events: list[dict], config: dict) -> list[dict]:
-    """Use Gemini to score each event's relevance to target avatars."""
+    """Use Gemini to rank each event 1-10 for networking relevance."""
     api_key = os.environ.get("GOOGLE_API_KEY")
     if not api_key:
         print("  WARNING: GOOGLE_API_KEY not set. Skipping AI scoring.")
         for event in events:
-            event["score"] = "unscored"
+            event["score"] = 0
             event["avatar_match"] = []
             event["reasoning"] = "AI scoring unavailable"
         return events
@@ -166,6 +166,8 @@ def score_events_with_ai(events: list[dict], config: dict) -> list[dict]:
         avatar_descriptions.append(f"- **{name}**: {avatar['description']}")
     avatar_context = "\n".join(avatar_descriptions)
 
+    primary_city = config["location"]["primary_city"]
+
     # Batch events into groups of 10 for efficiency
     scored_events = []
     batch_size = 10
@@ -179,26 +181,32 @@ def score_events_with_ai(events: list[dict], config: dict) -> list[dict]:
             events_text += f"Description: {(event['description'] or '')[:500]}\n"
             events_text += f"Location: {event['location']}\n"
             events_text += f"Organizer: {event['organizer']}\n"
+            events_text += f"Attendees: {event.get('attendees', 'N/A')}\n"
 
-        prompt = f"""You are an event relevance scorer for a local web design and marketing company called Spark Sites, based in Lakeland, FL.
+        prompt = f"""You are ranking events for a sales team at Spark Sites, a local web design and marketing company based in {primary_city}, FL.
 
-Score each event below for how likely our TARGET AVATARS would attend. We want to find events where we can network with potential clients.
+Rank each event on a 1-10 scale for how valuable it would be to attend for networking with potential clients.
 
-TARGET AVATARS:
+TARGET AVATARS (who we want to meet):
 {avatar_context}
+
+SCORING GUIDE:
+- 9-10: Perfect fit. Event is specifically for our avatars (small business networking, entrepreneur meetups, women in business). High attendee count. Close to {primary_city}.
+- 7-8: Strong fit. Our avatars will likely be there. Business-adjacent events, chamber of commerce, coworking meetups.
+- 5-6: Decent fit. Some avatars might attend. General professional events, community gatherings, market/vendor events.
+- 3-4: Weak fit. Mostly wrong audience but some crossover possible.
+- 1-2: Not relevant. Purely social, niche hobby, corporate-only, or online-only.
+
+FACTOR IN: avatar match (most important), proximity to {primary_city}, event size, networking opportunity, and specificity of the event to our ideal clients.
 
 EVENTS TO SCORE:
 {events_text}
 
 For EACH event, respond with a JSON array. Each item must have:
 - "index": the event number (1-based)
-- "score": "high", "medium", or "low"
+- "score": integer 1-10
 - "avatar_match": array of matching avatar names (e.g., ["local_business_owner", "growing_entrepreneur"])
 - "reasoning": one sentence explaining the score
-
-Score "high" if the event is SPECIFICALLY for our avatars (business networking, entrepreneur meetups, small business workshops).
-Score "medium" if our avatars MIGHT attend (general professional events, community gatherings, coworking events).
-Score "low" if it's unlikely (purely social, niche hobby, corporate-only).
 
 Return ONLY the JSON array, no other text."""
 
@@ -213,20 +221,20 @@ Return ONLY the JSON array, no other text."""
             )
 
             text = response.text.strip()
-            # Parse JSON response
             scores = json.loads(text)
 
             for score_item in scores:
                 idx = score_item["index"] - 1
                 if 0 <= idx < len(batch):
-                    batch[idx]["score"] = score_item.get("score", "low")
+                    raw_score = score_item.get("score", 1)
+                    batch[idx]["score"] = int(raw_score) if isinstance(raw_score, (int, float)) else 1
                     batch[idx]["avatar_match"] = score_item.get("avatar_match", [])
                     batch[idx]["reasoning"] = score_item.get("reasoning", "")
 
         except Exception as e:
             print(f"  WARNING: AI scoring failed for batch: {e}")
             for event in batch:
-                event.setdefault("score", "unscored")
+                event.setdefault("score", 0)
                 event.setdefault("avatar_match", [])
                 event.setdefault("reasoning", "Scoring failed")
 
@@ -258,17 +266,17 @@ def deduplicate(events: list[dict]) -> list[dict]:
 # Markdown Digest Generation
 # ---------------------------------------------------------------------------
 
+MAX_DIGEST_EVENTS = 10
+
+
 def generate_digest(events: list[dict], config: dict) -> str:
-    """Generate a markdown digest of scored events (high + medium only)."""
+    """Generate a markdown digest of the top-ranked events."""
     today = datetime.now().strftime("%Y-%m-%d")
     date_from, date_to = get_date_range()
 
-    # Sort: high first, then medium
-    score_order = {"high": 0, "medium": 1}
-    high = [e for e in events if e.get("score") == "high"]
-    medium = [e for e in events if e.get("score") == "medium"]
-    kept = high + medium
-    dropped = len(events) - len(kept)
+    # Sort by score descending, take the top N
+    ranked = sorted(events, key=lambda e: e.get("score", 0), reverse=True)
+    top = ranked[:MAX_DIGEST_EVENTS]
 
     lines = [
         f"---",
@@ -283,56 +291,40 @@ def generate_digest(events: list[dict], config: dict) -> str:
         f"**Business:** {config['business_name']}",
         f"**Geography:** {', '.join(config['location']['cities'])}",
         f"**Date range:** {date_from} to {date_to}",
-        f"**Events:** {len(kept)} relevant ({len(high)} high, {len(medium)} medium) — {dropped} low-relevance filtered out",
+        f"**Showing top {len(top)} of {len(events)} events scored**",
+        f"",
+        f"---",
         f"",
     ]
 
-    if high:
-        lines.append("---")
+    if not top or top[0].get("score", 0) == 0:
+        lines.append("*No scored events found this week.*")
         lines.append("")
-        lines.append("## High Relevance — Go to These")
-        lines.append("")
-        for event in high:
-            lines.extend(_format_event(event))
+        return "\n".join(lines)
 
-    if medium:
-        lines.append("---")
-        lines.append("")
-        lines.append("## Medium Relevance — Worth Considering")
-        lines.append("")
-        for event in medium:
-            lines.extend(_format_event(event))
-
-    if not kept:
-        lines.append("---")
-        lines.append("")
-        lines.append("*No high or medium relevance events found this week.*")
-        lines.append("")
+    for rank, event in enumerate(top, 1):
+        lines.extend(_format_event_ranked(event, rank))
 
     return "\n".join(lines)
 
 
-def _format_event(event: dict) -> list[str]:
-    """Format a single event for the digest (detailed)."""
+def _format_event_ranked(event: dict, rank: int) -> list[str]:
+    """Format a ranked event for the digest."""
+    score = event.get("score", 0)
     lines = [
-        f"### {event['title']}",
+        f"### #{rank}. {event['title']} (Score: {score}/10)",
         f"",
+        f"- **Why:** {event.get('reasoning', '')}",
         f"- **Date:** {event.get('date', 'TBD')} {event.get('time', '')}".strip(),
         f"- **Location:** {event.get('location', 'TBD')}",
-        f"- **Platform:** {event.get('platform', 'Unknown')}",
+        f"- **Organizer:** {event.get('organizer', 'Unknown')}",
         f"- **Attendees:** {event.get('attendees', 'N/A')}",
         f"- **Price:** {event.get('price', 'See event')}",
-        f"- **Organizer:** {event.get('organizer', 'Unknown')}",
-        f"- **Avatar match:** {', '.join(event.get('avatar_match', []))}",
-        f"- **Why:** {event.get('reasoning', '')}",
+        f"- **Best for:** {', '.join(event.get('avatar_match', [])) or 'General'}",
     ]
     if event.get("url"):
         lines.append(f"- **Link:** {event['url']}")
     lines.append("")
-    desc = event.get("description", "")
-    if desc:
-        lines.append(f"> {desc[:300]}{'...' if len(desc) > 300 else ''}")
-        lines.append("")
     return lines
 
 
@@ -440,14 +432,15 @@ def main():
     output_path = output_dir / "digest-latest.md"
     output_path.write_text(digest, encoding="utf-8")
 
+    # Show top results summary
+    ranked = sorted(scored_events, key=lambda e: e.get("score", 0), reverse=True)
+    top = ranked[:MAX_DIGEST_EVENTS]
+
     print(f"\n{'=' * 60}")
     print(f"DONE! Digest saved to: {output_path}")
-
-    high_count = len([e for e in scored_events if e.get("score") == "high"])
-    med_count = len([e for e in scored_events if e.get("score") == "medium"])
-    print(f"  {high_count} high-relevance events (go to these!)")
-    print(f"  {med_count} medium-relevance events (worth considering)")
-    print(f"  {len(scored_events) - high_count - med_count} low-relevance events")
+    print(f"  Top {len(top)} events (of {len(scored_events)} scored):")
+    for i, e in enumerate(top, 1):
+        print(f"    #{i}. [{e.get('score', 0)}/10] {e['title']}")
     print(f"{'=' * 60}")
 
 
