@@ -5,7 +5,7 @@ date: 2026-02-15
 status: draft
 offer: websites
 campaign: website-pain-points-for-entrepreneurs
-review_status: reviewed-with-p1-flags
+review_status: clear
 ---
 
 # Campaign Batch 001 — Website Pain Points for Entrepreneurs
@@ -622,7 +622,7 @@ We're not a remote team working from a dashboard. We're the people you run into 
 
 "Spark Sites are the best organization to work with to accomplish your goals. They are intelligent, productive and a pleasure to work with in every possible way." — Charles L.
 
-"Highly recommend for cost efficient and streamlined SEO, website and content generation." — Wesley S.
+"Grant and Amber are excellent! Highly recommend for cost efficient and streamlined SEO, website and content generation." — Wesley S.
 
 Custom websites from $500. All-inclusive packages from $3,500. Marketing that's built for small business budgets by people who actually understand what it means to run one.
 
@@ -675,7 +675,7 @@ Nicole Rhea — Professor of Marketing, Southeastern University
 
 We work with restaurants, retail shops, service businesses, coaches, and founders across Central Florida. Our clients stay because we explain what we're doing, we stick around after launch, and we treat their business like it matters — because it does.
 
-"Highly recommend — cost efficient and streamlined SEO, website and content generation." — Wesley S.
+"Grant and Amber are excellent! Highly recommend for cost efficient and streamlined SEO, website and content generation." — Wesley S.
 
 sparkmysite.com
 ```
@@ -713,7 +713,7 @@ That's the Spark Sites approach. We don't start with a quote. We start with unde
 
 We're based in Lakeland, Florida — not in a call center somewhere else. When you work with us, you're working with Grant (building web technology since 2004) and Nicole (Professor of Marketing at Southeastern University). The same people. Every time.
 
-"Highly recommend — cost efficient and streamlined SEO, website and content generation." — Wesley S.
+"Grant and Amber are excellent! Highly recommend for cost efficient and streamlined SEO, website and content generation." — Wesley S.
 
 Cost efficient. Streamlined. Those aren't words people usually use about marketing agencies.
 
@@ -1037,7 +1037,7 @@ sparkmysite.com
 **Hook:** "Grant and Amber are excellent! Highly recommend for cost efficient and streamlined SEO, website and content generation." — Wesley S.
 
 ```text
-"Highly recommend — cost efficient and streamlined SEO, website and content generation." — Wesley S.
+"Grant and Amber are excellent! Highly recommend for cost efficient and streamlined SEO, website and content generation." — Wesley S.
 
 Cost efficient. That's the part most people miss about DIY websites.
 

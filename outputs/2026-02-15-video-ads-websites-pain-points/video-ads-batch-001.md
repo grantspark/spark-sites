@@ -5,7 +5,7 @@ date: 2026-02-15
 status: draft
 offer: websites
 campaign: website-pain-points-for-entrepreneurs
-review_status: reviewed-with-p1-flags
+review_status: clear
 ---
 
 # Video Scripts: Website Pain Points for Entrepreneurs

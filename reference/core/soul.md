@@ -1,7 +1,7 @@
 ---
 type: reference
 status: active
-updated: 2026-02-11
+updated: 2026-02-15
 ---
 # Soul
 
@@ -34,6 +34,12 @@ Three questions to check if we're on track:
 1. Would a first-time business owner feel welcomed, not overwhelmed?
 2. Did the client learn something, or just receive a deliverable?
 3. Are we building their capacity, or their dependency on us?
+
+## Team
+
+- **Grant Sparks** — Founder, tech lead. Building web technology since 2004.
+- **Nicole Rhea** — Professor of Marketing at Southeastern University. Marketing strategist.
+- **Amber** — Team member. Referenced in client testimonials alongside Grant.
 
 ## Evolution
 
