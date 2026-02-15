@@ -300,7 +300,7 @@ def deduplicate(events: list[dict]) -> list[dict]:
 MAX_DIGEST_EVENTS = 10
 
 
-def generate_digest(events: list[dict], config: dict) -> str:
+def generate_digest(events: list[dict], config: dict, worth_watching: list[dict] = None) -> str:
     """Generate a markdown digest of the top-ranked events."""
     today = datetime.now().strftime("%Y-%m-%d")
     date_from, date_to = get_date_range()
@@ -331,20 +331,32 @@ def generate_digest(events: list[dict], config: dict) -> str:
     if not top or top[0].get("score", 0) == 0:
         lines.append("*No scored events found this week.*")
         lines.append("")
-        return "\n".join(lines)
+    else:
+        for rank, event in enumerate(top, 1):
+            lines.extend(_format_event_ranked(event, rank))
 
-    for rank, event in enumerate(top, 1):
-        lines.extend(_format_event_ranked(event, rank))
+    # Worth Watching section — high-scoring events outside the 21-day window
+    if worth_watching:
+        ww_ranked = sorted(worth_watching, key=lambda e: e.get("score", 0), reverse=True)
+        lines.append("---")
+        lines.append("")
+        lines.append("## Worth Watching — Coming Up Later")
+        lines.append("")
+        lines.append("*These scored 8/10 or higher but are beyond the next 3 weeks (or don't have a confirmed date yet). Put them on your radar.*")
+        lines.append("")
+        for event in ww_ranked:
+            lines.extend(_format_event_ranked(event, ""))
 
     return "\n".join(lines)
 
 
-def _format_event_ranked(event: dict, rank: int) -> list[str]:
+def _format_event_ranked(event: dict, rank) -> list[str]:
     """Format a ranked event for the digest."""
     score = event.get("score", 0)
     platform = event.get("platform", "Unknown")
+    title_prefix = f"#{rank}. " if rank else ""
     lines = [
-        f"### #{rank}. {event['title']} (Score: {score}/10)",
+        f"### {title_prefix}{event['title']} (Score: {score}/10)",
         f"",
         f"- **Why:** {event.get('reasoning', '')}",
         f"- **Date:** {event.get('date', 'TBD')} {event.get('time', '')}".strip(),
@@ -455,31 +467,47 @@ def main():
     today = datetime.now()
     cutoff = today + timedelta(days=21)
     future_events = []
+    outside_window = []  # Far-future, no date, or unparseable — scored separately
     for event in all_raw_events:
         event_date_str = str(event.get("date", "")).strip()
         if not event_date_str:
-            continue  # Drop events with no date — can't verify they're upcoming
+            outside_window.append(event)
+            continue
         try:
-            # dateparser.parse handles many formats: ISO, "Thu, 4 Dec 2025", "Tue, Feb 17 at 8:00 AM EST", etc.
             event_date = dateparser.parse(event_date_str, fuzzy=True)
             if event_date and today.date() <= event_date.date() <= cutoff.date():
                 future_events.append(event)
+            elif event_date and event_date.date() > cutoff.date():
+                outside_window.append(event)  # Future but beyond 21 days
+            # Past events are dropped entirely
         except Exception:
-            continue  # Drop unparseable dates — can't verify they're in range
-    dropped_dates = len(all_raw_events) - len(future_events)
-    print(f"  Kept {len(future_events)} future events, dropped {dropped_dates} past/out-of-range")
+            outside_window.append(event)  # Unparseable — might be worth watching
+    print(f"  Kept {len(future_events)} events in next 21 days")
+    print(f"  {len(outside_window)} events outside window (will check for high scorers)")
 
     # --- Deduplicate ---
-    print("\n[3/5] Deduplicating...")
+    print("\n[3/6] Deduplicating...")
     unique_events = deduplicate(future_events)
+    unique_outside = deduplicate(outside_window) if outside_window else []
 
     # --- AI Score ---
-    print("\n[4/5] Scoring events against target avatars...")
+    print("\n[4/6] Scoring events against target avatars...")
     scored_events = score_events_with_ai(unique_events, config)
 
+    # Score outside-window events too (for "Worth Watching" section)
+    scored_outside = []
+    if unique_outside:
+        print(f"\n[5/6] Scoring {len(unique_outside)} outside-window events...")
+        scored_outside = score_events_with_ai(unique_outside, config)
+        # Only keep high scorers (8+)
+        scored_outside = [e for e in scored_outside if e.get("score", 0) >= 8]
+        print(f"  {len(scored_outside)} scored 8+ (worth watching)")
+    else:
+        print("\n[5/6] No outside-window events to score.")
+
     # --- Generate digest ---
-    print("\n[5/5] Generating digest...")
-    digest = generate_digest(scored_events, config)
+    print("\n[6/6] Generating digest...")
+    digest = generate_digest(scored_events, config, worth_watching=scored_outside)
 
     # Save markdown — single file, overwritten each week (Zapier/N8N watches this)
     output_dir = Path(__file__).parent / config["output"]["markdown_path"].replace("agents/event-scout/", "")
