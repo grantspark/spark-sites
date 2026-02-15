@@ -5,7 +5,7 @@ date: 2026-02-15
 status: draft
 offer: websites
 campaign: website-pain-points-for-entrepreneurs
-review_status: null
+review_status: reviewed-with-p1-flags
 ---
 
 # Video Scripts: Website Pain Points for Entrepreneurs
@@ -162,7 +162,7 @@ Every entrepreneur has a marketing horror story. The agency that disappeared. Th
 **Body:**
 That skepticism you're carrying? It's healthy. The right marketing partner won't fight it. They'll welcome it.
 
-At Spark Sites, we assume every new client has been burned before. Because most have.
+At Spark Sites, we built our model for clients who've been through exactly that.
 
 So here's how we work differently. We explain everything. We don't disappear after the invoice. We teach alongside every project. And we price for small business budgets. Not enterprise ones.
 
@@ -248,7 +248,7 @@ Imagine sending a potential client your website and feeling proud instead of apo
 **Body:**
 "Oh, I'm redoing my website." "It's not great but we're working on it." "Just check our Instagram instead."
 
-Sound familiar? That's the DIY gap. Your business has grown past your website and everyone can see it except you.
+That's the DIY gap. Your business has grown past your website and everyone can see it except you.
 
 A custom website changes that conversation. It matches the quality of your work. It ranks on Google. It makes the impression you've been wanting.
 
@@ -374,7 +374,7 @@ What Charles didn't mention is that we spent over an hour understanding his busi
 
 That's the Spark Sites approach. We don't start with a quote. We start with understanding.
 
-Most agencies rush to the proposal. We rush to comprehension. What does your business actually need? What does success look like for you specifically?
+Most agencies rush to the proposal. We take the time to actually listen. What does your business actually need? What does success look like for you specifically?
 
 Grant and Nicole bring twenty-plus years of combined expertise. But expertise without listening is just noise.
 
