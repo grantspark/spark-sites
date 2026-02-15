@@ -5,6 +5,10 @@
 # Session state (not shared)
 .vip/local.yaml
 
+# VIP bridge links (engine, not data)
+.claude/skills/
+.claude/settings.local.json
+
 # OS
 .DS_Store
 Thumbs.db

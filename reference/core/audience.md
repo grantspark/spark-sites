@@ -23,6 +23,14 @@ Small business owners and entrepreneurs in Central Florida — particularly Lake
 - Looking for a trusted guide, not a vendor
 - Values understanding what they're paying for
 
+### The Female Founder
+- Female entrepreneur, founder, or small business owner ages 25-45
+- Building something real — often solo or with a tiny team
+- Juggling operations, marketing, and client delivery simultaneously
+- Has tried DIY tools (Wix, Squarespace, Canva) but knows she's outgrowing them
+- Wants a professional digital presence that matches the quality of her work
+- Values partnership over being sold to — wants to understand, not just trust
+
 ### The Event Host
 - Opening a new location or launching something
 - Wants buzz and foot traffic
