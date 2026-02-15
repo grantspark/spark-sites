@@ -1,0 +1,125 @@
+# Event Scout Configuration
+# Edit this file to customize event discovery for your team/client.
+
+# --- Identity ---
+business_name: "Spark Sites"
+team:
+  - Grant
+  - Nicole
+  - Amber
+
+# --- Geography ---
+location:
+  primary_city: "Lakeland"
+  state: "FL"
+  country: "US"
+  radius_miles: 100
+  cities:
+    - "Lakeland"
+    - "Tampa"
+    - "Orlando"
+    - "Winter Haven"
+    - "Kissimmee"
+    - "Brandon"
+    - "St. Petersburg"
+
+# --- Target Avatars ---
+# These define WHO you want to meet at events.
+# The AI scorer matches event descriptions against these profiles.
+avatars:
+  local_business_owner:
+    description: "Runs a physical location (retail, restaurant, service). Needs a website but doesn't know where to start. Has been burned by cheap freelancers or overpriced agencies."
+    keywords:
+      - "small business"
+      - "local business"
+      - "retail"
+      - "restaurant"
+      - "service business"
+      - "business owner"
+
+  growing_entrepreneur:
+    description: "Has a working business, ready to scale. Knows they need marketing but overwhelmed by options. Looking for a trusted guide, not a vendor."
+    keywords:
+      - "entrepreneur"
+      - "startup"
+      - "business growth"
+      - "scaling"
+      - "marketing"
+      - "digital marketing"
+
+  female_founder:
+    description: "Female entrepreneur ages 25-45. Building something real, often solo or tiny team. Has tried DIY tools, wants professional digital presence."
+    keywords:
+      - "women in business"
+      - "female founder"
+      - "women entrepreneurs"
+      - "she-EO"
+      - "boss babe"
+      - "women networking"
+
+  event_host:
+    description: "Opening a new location or launching something. Wants buzz and foot traffic. Interested in influencer marketing and community."
+    keywords:
+      - "grand opening"
+      - "launch event"
+      - "networking"
+      - "community event"
+      - "mixer"
+      - "meetup"
+
+# --- Event Sources ---
+sources:
+  event_scraper_pro:
+    actor: "webdatalabs/event-scraper-pro"
+    enabled: true
+    platforms:
+      - "meetup"
+      - "eventbrite"
+      - "luma"
+    search_keywords:
+      - "small business"
+      - "entrepreneur"
+      - "networking"
+      - "marketing"
+      - "startup"
+      - "business owner"
+      - "women in business"
+      - "digital marketing"
+      - "coworking"
+    include_online: false
+    max_results_per_platform: 50
+
+  facebook_events:
+    actor: "apify/facebook-events-scraper"
+    enabled: true
+    search_queries:
+      - "business networking Lakeland"
+      - "entrepreneur Tampa"
+      - "small business Orlando"
+      - "women business networking Florida"
+      - "startup meetup Tampa Bay"
+      - "coworking event Lakeland"
+    max_events: 50
+
+# --- Schedule ---
+schedule:
+  day: "thursday"
+  time: "08:00"
+  timezone: "America/New_York"
+
+# --- Output ---
+output:
+  markdown: true
+  markdown_path: "agents/event-scout/output"
+  email: false
+  # email_to:
+  #   - "grant@sparkmysite.com"
+  #   - "nicole@sparkmysite.com"
+  #   - "amber@sparkmysite.com"
+  # email_from: "scout@sparkmysite.com"
+
+# --- API Keys ---
+# These are read from environment variables, NOT stored here.
+# Set them in your shell profile or GitHub Actions secrets:
+#   APIFY_API_TOKEN   — from https://console.apify.com/account/integrations
+#   GOOGLE_API_KEY    — for Gemini AI scoring (you already have this)
