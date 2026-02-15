@@ -458,15 +458,14 @@ def main():
     for event in all_raw_events:
         event_date_str = str(event.get("date", "")).strip()
         if not event_date_str:
-            future_events.append(event)  # Keep events with no date (let AI judge)
-            continue
+            continue  # Drop events with no date — can't verify they're upcoming
         try:
             # dateparser.parse handles many formats: ISO, "Thu, 4 Dec 2025", "Tue, Feb 17 at 8:00 AM EST", etc.
             event_date = dateparser.parse(event_date_str, fuzzy=True)
             if event_date and today.date() <= event_date.date() <= cutoff.date():
                 future_events.append(event)
-        except (ValueError, TypeError):
-            future_events.append(event)  # Keep unparseable dates
+        except Exception:
+            continue  # Drop unparseable dates — can't verify they're in range
     dropped_dates = len(all_raw_events) - len(future_events)
     print(f"  Kept {len(future_events)} future events, dropped {dropped_dates} past/out-of-range")
 
