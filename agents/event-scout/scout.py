@@ -444,15 +444,22 @@ def main():
     print("\n[4/4] Generating digest...")
     digest = generate_digest(scored_events, config)
 
-    # Save markdown
+    # Save markdown — dated archive + fixed "latest" for Zapier/N8N triggers
     today = datetime.now().strftime("%Y-%m-%d")
     output_dir = Path(__file__).parent / config["output"]["markdown_path"].replace("agents/event-scout/", "")
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Dated archive (history)
     output_path = output_dir / f"digest-{today}.md"
     output_path.write_text(digest, encoding="utf-8")
 
+    # Fixed filename (Zapier watches this file for changes)
+    latest_path = output_dir / "digest-latest.md"
+    latest_path.write_text(digest, encoding="utf-8")
+
     print(f"\n{'=' * 60}")
     print(f"DONE! Digest saved to: {output_path}")
+    print(f"      Latest copy at:  {latest_path}")
 
     high_count = len([e for e in scored_events if e.get("score") == "high"])
     med_count = len([e for e in scored_events if e.get("score") == "medium"])
