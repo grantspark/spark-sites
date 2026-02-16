@@ -1,6 +1,6 @@
 ---
 type: output
-status: draft
+status: complete
 date: 2026-02-16
 paired_with: image-prompts.md
 ---
