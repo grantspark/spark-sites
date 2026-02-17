@@ -217,13 +217,15 @@ After the proposal, generate an internal-only section for the team:
 ## Internal Notes (DO NOT SEND TO CLIENT)
 
 ### Labor Estimate
+
+**Important:** Use the pricing matrix as the source of truth. Some services are flat-rate (the client price IS the line item — do not back-calculate an hourly rate). Others are hourly. Match whatever the matrix says.
+
 | Service | Est. Hours | Rate | Internal Cost |
 |---------|-----------|------|---------------|
-| [service] | X hrs | $120/hr | $X |
+| [flat-rate service] | [hours from matrix] | Flat rate | $[matrix price] |
+| [hourly service] | X hrs | $XX/hr | $X |
 
-**Total labor cost:** $X
 **Total quoted:** $X
-**Gross margin:** X%
 
 ### Upsell Strategy
 - [What to emphasize in the follow-up call]
@@ -331,6 +333,37 @@ For services that cross-sell naturally (per the product ladder), proactively loa
 - Google Ads setup + management: $350 setup + $350/mo (capture "homes for sale in [city]" searches)
 
 **Phasing:** Phase 1 = MLS + site edits ($450). Phase 2 = SEO + Google ($1,400 + $350/mo).
+
+---
+
+## Step 7: Push to ClickUp
+
+After files are saved and the user approves the proposal, push the proposal data to the associated ClickUp task.
+
+### Find the Task
+
+1. Ask the user for the client name or task reference (they may already know the task ID or custom ID)
+2. If not provided, search ClickUp using the client name, project keywords, and any identifying details (e.g., "S&D", "Georgia", "MLS") — run 2-3 searches with different terms to increase match confidence
+3. Present the best match to the user and confirm before updating
+
+### Update the Task
+
+Once confirmed, push all three documents:
+
+**Description (append):** Append to the existing task description with a `---` separator, in this order:
+1. **Internal notes** (`internal-notes.md`) — first, so team context is at the top
+2. **Proposal** (`proposal.md`) — second, the client-facing document
+
+Strip the YAML frontmatter from both files before appending. Keep the markdown content as-is.
+
+**Comment:** Post the email draft as a task comment in this format:
+```
+DRAFT-ONLY: [full contents of email.md]
+```
+
+### If ClickUp Is Not Connected
+
+If the MCP ClickUp tools are not available (user hasn't connected ClickUp), skip this step and tell the user: "Proposal saved locally. Connect ClickUp (`/mcp`) to auto-push proposals to tasks."
 
 ---
 

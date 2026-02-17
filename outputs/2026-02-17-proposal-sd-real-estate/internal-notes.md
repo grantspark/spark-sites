@@ -16,12 +16,11 @@ status: draft
 
 | Service | Est. Hours | Rate | Internal Cost |
 |---------|-----------|------|---------------|
-| MLS/IDX Installation | ~2 hrs | $120/hr | $240 |
+| MLS/IDX Installation (Georgia) | ~2 hrs install + ~2 hrs site edits | Flat rate | $450 |
 | Content Support (nav + hero) | 2 hrs | $65/hr | $130 |
 
-**Total labor cost:** $370
 **Total quoted:** $580
-**Gross margin:** 36%
+**MLS/IDX is a flat-rate service** — internal labor (~4 hrs) is absorbed into the $450 price per the pricing matrix. Content Support is billed hourly on top.
 
 ---
 
