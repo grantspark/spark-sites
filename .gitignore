@@ -5,8 +5,7 @@
 # Session state (not shared)
 .vip/local.yaml
 
-# VIP bridge links (engine, not data)
-.claude/skills/
+# VIP settings (engine, not data)
 .claude/settings.local.json
 
 # OS
