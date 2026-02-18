@@ -8,6 +8,9 @@
 # VIP settings (engine, not data)
 .claude/settings.local.json
 
+# VIP skills (loaded via additionalDirectories, not tracked here)
+.claude/skills/
+
 # OS
 .DS_Store
 Thumbs.db
