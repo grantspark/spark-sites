@@ -168,25 +168,32 @@ Wait for user response before proceeding.
 
 ### Step 6 — Push Approved Leads to ClickUp
 
-For each approved lead, create a ClickUp task:
+Create all approved tasks in parallel. For each approved lead:
 
+**Task fields:**
 ```
 Tool: clickup_create_task
 List: Spark Sites Sales (ID: 33882537)
 Status: prospect
 Name: [Business Name] — [City]
-Assignees: [10521914]  # Grant
-Due date: today + 3 days
-Description:
-  Category: [category]
-  Signal: [signal]
-  Phone: [phone]
-  Website: [URL or None]
-  Socials: [links or None]
-  Maps: [Google Maps URL]
+Assignees: [10521914, 42473908]  # Grant + Nicole
+Due date: today
+Priority: urgent
+Custom fields:
+  - 02.Primary Phone (effdc2a0-6373-4e15-8d57-d0963276ef64): [phone in E.164 format, e.g. +18636661199]
+  - Email 3 (f4a70b34-655d-4a35-b16d-9f09b2760a0c): grant@stateofthespark.com
+  - Email 4 (74409a59-4466-4692-8a5a-4319c0f853d5): nicole@sparkmysite.com
 ```
 
-After all tasks are created, confirm in chat:
+**After all tasks are created, add a comment to each:**
+```
+Tool: clickup_create_task_comment
+Comment: "Next step: call this lead - [phone formatted as (XXX) XXX-XXXX]"
+```
+
+Run all comment calls in parallel after tasks are created.
+
+After all tasks and comments are done, confirm in chat:
 
 > "Done. X tasks created in Spark Sites Sales → prospect. Ready to run again or call it for today?"
 
