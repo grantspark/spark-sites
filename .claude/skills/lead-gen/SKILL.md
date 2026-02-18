@@ -199,7 +199,88 @@ After all tasks and comments are done, confirm in chat:
 
 ---
 
-### Step 7 — Build Demo Site (triggered on request)
+### Step 7 — Codex Check (runs automatically before every demo site build)
+
+Before generating any demo site, check whether the lead's industry has a design codex.
+
+**Codex location:** `spark-sites/reference/design/industry-codex/`
+
+**Currently profiled industries:**
+- `home-services.md` — contractor, handyman, HVAC, plumbing, cleaning, repair
+- `chiropractor.md` — chiropractic care, spinal, wellness
+- `beauty-salon.md` — hair salon, nail salon, boutique salon
+
+**Logic:**
+
+```
+1. Map the lead's Google Maps category to the nearest codex industry.
+   Examples:
+     "Contractor" → home-services.md
+     "Handyman" → home-services.md
+     "Chiropractor" → chiropractor.md
+     "Hair salon" → beauty-salon.md
+     "Nail salon" → beauty-salon.md
+     "Beauty salon" → beauty-salon.md
+
+2. If a matching codex file exists:
+   → Read it. Proceed to Step 8 (demo site build) using its palette and typography.
+
+3. If NO matching codex file exists:
+   → Run the industry design research workflow below.
+   → Write the new codex file.
+   → Then proceed to Step 8.
+```
+
+**Research workflow for a new industry:**
+
+Run all three searches in parallel:
+
+```
+Search 1: "best [industry] website design examples 2025"
+Search 2: "[industry] website color palette hex codes"
+Search 3: "[industry] website fonts typography"
+```
+
+Then fetch 3–4 top-ranked live websites from the results and extract:
+- Dominant colors with hex codes
+- Accent colors / CTA colors
+- Colors to avoid
+- Display/heading fonts (named)
+- Body fonts (named)
+- Photography style and subjects
+- Hero layout pattern
+- Standard section order
+- Trust signals used
+- Tone words
+
+Write the new codex file to:
+```
+spark-sites/reference/design/industry-codex/[industry-slug].md
+```
+
+Follow the exact structure of the existing codex files (see `home-services.md` as the template). Include:
+- Colors section with palette families
+- Typography section with pairings
+- Photography section
+- Layout conventions
+- Tone and feel
+- v0 prompt template at the bottom
+- Credibility checklist
+
+Add a row to `spark-sites/reference/design/industry-codex/README.md`.
+
+Commit the new codex file before proceeding:
+```
+git add reference/design/industry-codex/
+git commit -m "[add] Design codex — [industry]"
+```
+
+Confirm in chat:
+> "No codex found for [industry]. Researched and wrote [industry-slug].md. Proceeding with demo site build."
+
+---
+
+### Step 8 — Build Demo Site (triggered on request)
 
 User says: `build site for lead X`, `build demo for [business]`, or `build site`
 
@@ -213,7 +294,7 @@ User says: `build site for lead X`, `build demo for [business]`, or `build site`
 
 ---
 
-#### 7a — Generate site-config.ts
+#### 8a — Generate site-config.ts
 
 Using data from the lead's markdown entry + any research from Facebook/Google Maps, populate:
 
@@ -271,17 +352,13 @@ export const siteConfig = {
 }
 ```
 
-**Color palette:** Adjust `globals.css` CSS variables to match the lead's brand feel.
-- Default (Spark): coral/pink gradient on white
-- For home services / contractors: earthy tones — slate, warm cream, olive or terracotta accent
-- For beauty / salons: soft, feminine — blush, dusty rose, gold
-- For chiropractors: clean, clinical — navy, white, teal accent
-
-Only change the `:root` color variables — nothing else in globals.css.
+**Color palette:** Pull the recommended palette from the industry codex file (Step 7).
+Use the archetype or family that best matches the business's positioning.
+Only change the `:root` color variables in globals.css — nothing else.
 
 ---
 
-#### 7b — Scaffold the repo
+#### 8b — Scaffold the repo
 
 ```bash
 # 1. Copy the template
@@ -296,8 +373,8 @@ rm -rf .git
 git init
 git checkout -b main
 
-# 4. Overwrite site-config.ts with generated content (see 7a)
-# 5. Update globals.css color variables (see 7a)
+# 4. Overwrite site-config.ts with generated content (see 8a)
+# 5. Update globals.css color variables from codex (see 8a)
 
 # 6. Commit
 git add .
@@ -311,7 +388,7 @@ gh repo create grantspark/[client-slug] --private --source=. --push
 
 ---
 
-#### 7c — Deploy to Netlify
+#### 8c — Deploy to Netlify
 
 **One-time per demo site** (dashboard walkthrough, ~5 min):
 
