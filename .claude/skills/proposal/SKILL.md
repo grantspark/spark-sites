@@ -29,7 +29,68 @@ If CWD is NOT a business repo:
 
 ---
 
-## Step 1: Load Pricing Context
+## Step 1: Find and Verify ClickUp Task
+
+**Always start here.** Before writing anything, find the right ClickUp task so the proposal has full client context and a home when it's done.
+
+### 1a. Ask for the client
+
+> "Who's the proposal for? (Client name, or paste a ClickUp task ID if you have one)"
+
+If the user already mentioned a client name or task in the conversation, skip asking and go straight to search.
+
+### 1b. Search ClickUp
+
+Run 1-2 searches with different keyword combinations to find the right task:
+
+```
+Tool: clickup_search
+Keywords: [client name] + [project keywords]
+Filters:
+  - task_statuses: ["unstarted", "active"]
+Count: 5
+```
+
+**Use `detail_level: 'summary'`** when pulling task details to keep token cost low. Full details are rarely needed at this stage.
+
+### 1c. Present matches and confirm
+
+Show the user the top matches with key details (name, status, list, assignees). Ask:
+
+> "Is this the right task?
+>
+> 1. [Task name] — [list] — [status]
+> 2. [Task name] — [list] — [status]
+> 3. None of these (I'll search again or create one)"
+
+**Do not proceed until the user confirms the task.** A wrong task means the whole proposal is built on wrong context.
+
+### 1d. If no task found
+
+If ClickUp search returns nothing relevant:
+
+> "I didn't find a matching task. Want me to:
+>
+> 1. Create a new task for this proposal (tell me which list)
+> 2. Proceed without a ClickUp task (proposal saves locally only)
+> 3. Search again with different keywords"
+
+If creating: use `clickup_create_task` with the client name and "Proposal" in the title. Assign to the user.
+
+### 1e. Pull task context (summary only)
+
+Once confirmed, pull the task with `detail_level: 'summary'` and read the comments. This gives you:
+
+- Client details and history
+- Previous conversations and notes
+- Logins and access info (don't include in proposal)
+- What's already been done vs. what's outstanding
+
+**Store the confirmed task_id for Step 7** (pushing the finished proposal back to ClickUp).
+
+---
+
+## Step 2: Load Pricing Context
 
 Read these files (all required):
 
@@ -39,6 +100,7 @@ Read these files (all required):
 | Product Ladder | `reference/domain/product-ladder.md` | How services connect, upsell paths |
 | Soul | `reference/core/soul.md` | Voice and values for proposal tone |
 | Voice | `reference/core/voice.md` | How Spark communicates |
+| Proposal Voice | `reference/domain/funnel/proposal-voice.md` | Proposal-specific writing rules, structure, tone |
 
 Also load the specific offer file(s) for whatever services the client is asking about:
 
@@ -50,7 +112,7 @@ If the client mentions multiple services, load all relevant offer files.
 
 ---
 
-## Step 2: Gather Client Context
+## Step 3: Gather Client Context
 
 Ask the user for the intake. Accept any of these formats:
 
@@ -88,7 +150,7 @@ If the user gives a one-liner like "S&D wants an MLS install," work with what yo
 
 ---
 
-## Step 3: Build the Proposal
+## Step 4: Build the Proposal
 
 ### Structure
 
@@ -207,7 +269,7 @@ just a reminder of who we are.]
 
 ---
 
-## Step 4: Internal Notes (Not Client-Facing)
+## Step 5: Internal Notes (Not Client-Facing)
 
 After the proposal, generate an internal-only section for the team:
 
@@ -239,7 +301,7 @@ After the proposal, generate an internal-only section for the team:
 
 ---
 
-## Step 5: Email Draft (Ember Voice)
+## Step 6: Email Draft (Ember Voice)
 
 Every proposal includes a ready-to-send email written in the **Ember** persona.
 
@@ -289,16 +351,12 @@ Save the email draft as: `outputs/YYYY-MM-DD-proposal-{client-slug}/email.md`
 
 ---
 
-## Step 6: Save and Present
+## Step 7: Save and Present
 
 1. Save to: `outputs/YYYY-MM-DD-proposal-{client-slug}/proposal.md`
 2. Save internal notes: `outputs/YYYY-MM-DD-proposal-{client-slug}/internal-notes.md`
 3. Save email draft: `outputs/YYYY-MM-DD-proposal-{client-slug}/email.md`
-4. Present a summary to the user (not the whole proposal — they can read the files):
-   - What was quoted (explicit)
-   - What was recommended (upsell)
-   - Total range
-   - Any flags or assumptions
+4. **Display the full proposal in the conversation as plain markdown.** Do NOT use HTML when presenting to the team. The proposal-voice.md rules about HTML format apply only when the content is pasted into a ClickUp comment or email. In the conversation, use normal readable markdown (bold, bullets, headers).
 5. Ask: "Want me to adjust anything before you send this?"
 
 ---
@@ -336,19 +394,13 @@ For services that cross-sell naturally (per the product ladder), proactively loa
 
 ---
 
-## Step 7: Push to ClickUp
+## Step 8: Push to ClickUp
 
-After files are saved and the user approves the proposal, push the proposal data to the associated ClickUp task.
-
-### Find the Task
-
-1. Ask the user for the client name or task reference (they may already know the task ID or custom ID)
-2. If not provided, search ClickUp using the client name, project keywords, and any identifying details (e.g., "S&D", "Georgia", "MLS") — run 2-3 searches with different terms to increase match confidence
-3. Present the best match to the user and confirm before updating
+After files are saved and the user approves the proposal, push the proposal data to the ClickUp task confirmed in Step 1.
 
 ### Update the Task
 
-Once confirmed, push all three documents:
+Using the task_id from Step 1, push all three documents:
 
 **Description (append):** Append to the existing task description with a `---` separator, in this order:
 1. **Internal notes** (`internal-notes.md`) — first, so team context is at the top
@@ -356,10 +408,7 @@ Once confirmed, push all three documents:
 
 Strip the YAML frontmatter from both files before appending. Keep the markdown content as-is.
 
-**Comment:** Post the email draft as a task comment in this format:
-```
-DRAFT-ONLY: [full contents of email.md]
-```
+**Comment:** Post the email draft as a task comment in **plain text**. No HTML — ClickUp doesn't render it. Use simple text formatting: line breaks for spacing, dashes or asterisks for list items. Prefix with "DRAFT-ONLY:" so the team knows not to send as-is.
 
 ### If ClickUp Is Not Connected
 

@@ -33,11 +33,13 @@ Every proposal should name the strategic thinking explicitly at least once. This
 
 Don't bury strategy inside other deliverables. Give it its own line item. Clients buy strategy when they can see it.
 
-### Output format: HTML email, not markdown
+### Output format
 
-When pasting proposal copy into a ClickUp task comment, format it as basic HTML email. No markdown. Use `<b>`, `<br>`, `<ul>`, `<li>`. Keep it clean and readable in any email client.
+**In conversation (team review):** Plain readable markdown. Headers, bold, bullets — whatever reads well.
 
-No headers. No horizontal rules. Just bold text, line breaks, and bullet lists. The way a real email looks.
+**In ClickUp comments:** Plain text. No HTML (ClickUp doesn't render it). Use line breaks for spacing and dashes for list items. Keep it simple and readable.
+
+**In email:** Basic HTML for email clients. Use `<b>`, `<br>`, `<ul>`, `<li>`. No headers or horizontal rules. The way a real email looks.
 
 ---
 
@@ -151,4 +153,5 @@ For projects that aren't standard website builds:
 - Formal sign-offs with titles
 - Attachments-only proposals with no email body (the email IS the pitch)
 - Passive language ("services would be rendered") instead of active ("we'll build")
-- Markdown formatting in ClickUp comments or emails (use plain HTML)
+- HTML formatting in ClickUp comments (doesn't render — use plain text)
+- Markdown formatting in emails (use basic HTML for email clients)
