@@ -177,20 +177,85 @@ Revolutionary, innovative, passionate, world-class, best-in-class, boutique, hol
 
 ## v0 prompt template
 
+Paste this into v0.dev or the v0 API. Fill every `[bracket]` before submitting.
+
 ```
-One-page home services website for [Business Name] in [City], FL.
-Palette: [Family 1/2/3/4 — see codex]. Primary: [hex]. CTA: [hex].
-Display font: [Oswald OR Montserrat ExtraBold]. Body font: [Roboto OR Open Sans].
-Sections:
-  - Hero: H1 service + location, phone number prominent, "Get a Free Estimate" CTA,
-    Google stars trust anchor, [authority OR outcome] photography pattern
-  - Service tiles: 6 clickable cards with icons
-  - Trust stats: years in business, customers served, jobs completed
-  - Why Choose Us: 4 icons — Licensed & Insured, Background-Checked, Same-Day Service, Upfront Pricing
-  - Reviews: 3 full-text cards with name, date, stars, Google logo
-  - Contact: phone (large, clickable), address, hours, service area cities
-  - Footer: license number, BBB, copyright
-Sticky nav with phone + "Book Now" button persistent on scroll. Mobile-first. Next.js + Tailwind.
+Build a one-page home services website for [Business Name] in [City], FL.
+
+PALETTE — Family 3 (Deep Teal + Rusted Gold):
+- Background: #FFFFFF
+- Primary / dark sections: #12343b (deep teal)
+- CTA / accent: #ce9e62 (rusted gold)
+- Text: #1A2B30
+- Light sections: #fef6dd (warm cream)
+
+FONTS:
+- Display: Oswald Bold (headings, nav, stats)
+- Body: Open Sans (descriptions, body copy)
+
+SECTIONS — build in this exact order:
+
+1. STICKY NAV
+   Logo left ([Business Name] in Oswald), nav links center (Services, About, Contact),
+   gold "Call (XXX) XXX-XXXX" button right. Persists on scroll. Mobile: hamburger.
+
+2. HERO
+   Full-bleed background image of a well-maintained suburban home exterior (use a high-quality
+   Unsplash image — search "suburban home exterior well maintained florida"). Dark overlay
+   opacity 0.55. Content centered or left-aligned:
+   - Eyebrow: "[City], FL · Licensed & Insured"
+   - H1: "[Headline — e.g. Your Home Deserves Paragon Level Care]" — Oswald Bold, large
+   - Subhead: "[1-2 sentence value prop]" — Open Sans, white, 18px
+   - Two CTAs side by side: primary gold button "Get a Free Estimate" + outlined white button "Call (XXX) XXX-XXXX"
+   - Stats bar immediately below CTAs: 3 numbers in Oswald Bold — "[X]+ Years", "[X,XXX]+ Customers",
+     "[X.X]★ Google Rating" — white on semi-transparent dark strip
+
+3. FEATURED SERVICES
+   White background. Section header: "Featured Services" (Oswald). Subhead: 1 sentence.
+   2×2 or 2×3 grid of photo cards. Each card:
+   - Full photo background (Unsplash — use service-specific search term below)
+   - Dark gradient overlay from bottom (opacity 0.65)
+   - Service name in Oswald Bold white at bottom
+   - 1-line description in Open Sans white below name
+   Photo search terms per service:
+   - Plumbing → "plumber hands pipes sink repair"
+   - Electrical → "electrician working electrical panel wiring"
+   - HVAC → "hvac technician air conditioning unit repair"
+   - Painting → "painter rolling interior wall white"
+   - Cleaning → "professional house cleaning service"
+   - Handyman → "handyman home repair tools"
+   - Pressure Washing → "pressure washing driveway concrete"
+   - Roofing → "roofing contractor shingles repair"
+   (Use the 4–6 services relevant to this business)
+
+4. READY TO GET STARTED (CTA banner)
+   Full-width, deep teal background (#12343b). White text.
+   - H2: "Ready to Get Started?" — Oswald Bold
+   - Subtext: 1 sentence (emergency or quick response)
+   - Contact details listed vertically: phone, email, address, hours — with icons
+   - Gold "Request a Free Estimate" button
+
+5. REQUEST A FREE ESTIMATE (form)
+   White background. Section header in Oswald.
+   Two-column layout on desktop, single on mobile:
+   - Fields: First Name, Last Name, Phone, Email, Service Needed (dropdown with all services), Message
+   - Gold submit button: "Submit Request"
+
+6. FOOTER
+   Deep teal background (#12343b). White text.
+   - Business name + tagline left
+   - Quick links center
+   - Phone + address right
+   - Bottom bar: copyright, license number
+
+TECHNICAL:
+- Next.js 14+ with App Router
+- Tailwind CSS utility classes
+- All images from Unsplash (use next/image with unoptimized=true for static export)
+- output: 'export' in next.config for static deployment
+- Mobile-first responsive — test breakpoints at 375px, 768px, 1280px
+- No carousels, no auto-playing anything
+- Click-to-call on all phone numbers (tel: links)
 ```
 
 ---

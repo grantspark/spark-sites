@@ -286,126 +286,86 @@ User says: `build site for lead X`, `build demo for [business]`, or `build site`
 
 **Do not run automatically.** Wait for user to request a demo site for a specific lead.
 
-**Template:** `startwithspark` repo (`C:/Users/grant/OneDrive/Documents/GitHub/startwithspark`)
-- One-page Next.js static export
-- Sections: Hero → Services Grid → Mid Banner → About → CTA Banner → Contact → Footer
-- Single config file: `site-config.ts` — all copy, brand, CTAs live here
-- Components pull directly from config — no component edits needed for new clients
+**Approach:** v0.dev — generates a unique, photo-first Next.js site from a detailed prompt.
+No template ceiling. Each site looks custom and industry-appropriate.
 
 ---
 
-#### 8a — Generate site-config.ts
+#### 8a — Assemble the v0 prompt
 
-Using data from the lead's markdown entry + any research from Facebook/Google Maps, populate:
+Using data from the lead's markdown entry + the industry codex from Step 7, populate and output the complete v0 prompt template from the codex file.
 
-```typescript
-export const siteConfig = {
-  brand: {
-    name: "[Business Name]",
-    tagline: "[Tagline or city + category]",
-    email: "",          // leave blank if unknown
-    domain: "",         // leave blank — no domain yet
-    location: "[City], FL",
-  },
-  hero: {
-    headline: "[Transformation or tagline headline]",
-    subhead: "[What they do + why it matters in 1-2 sentences]",
-    ctaText: "Call Us Now",
-    ctaUrl: "#contact",
-  },
-  services: {
-    sectionHeader: "How We Can Help",
-    items: [
-      // 4-6 plausible services based on category
-      // Use their Google Maps category to infer what they likely offer
-      // Each: { title, description, icon }
-      // Icons: globe, megaphone, search, chart, palette, lightbulb, home, wrench, star, phone
-    ],
-  },
-  midBanner: {
-    tagline: "[Short punchy statement — 4-6 words]",
-    subtext: "[One sentence supporting the tagline]",
-    ctaText: "Call Now",
-    ctaUrl: "#contact",
-  },
-  about: {
-    sectionHeader: "About [Business Name]",
-    body: [
-      "[Owner name / business history / what makes them different]",
-      "[Second paragraph — local roots, approach, commitment]",
-    ],
-  },
-  ctaBanner: {
-    headline: "[Action-oriented headline with their phone number or CTA]",
-    ctaText: "Call (XXX) XXX-XXXX",
-    ctaUrl: "tel:+1XXXXXXXXXX",
-  },
-  contact: {
-    sectionHeader: "Get In Touch",
-    subtext: "[Address + phone. Simple and direct.]",
-  },
-  footer: {
-    tagline: "[Business Name] — [City], FL",
-    subtext: "[One-liner about what they do]",
-    year: new Date().getFullYear(),
-  },
-}
-```
+Fill every bracket with real lead data:
+- `[Business Name]` → from lead markdown
+- `[City]` → from lead address
+- `[Headline]` → craft from business positioning and codex tone guidelines
+- `[Value prop]` → 1-2 sentences, outcome-focused, using codex tone words
+- `[(XXX) XXX-XXXX]` → lead phone number
+- `[X]+ Years / Customers / Rating` → research from Google Maps listing if available; use plausible defaults if not
+- Services list → infer 4-6 from Google Maps category, match to codex photo search terms
 
-**Color palette:** Pull the recommended palette from the industry codex file (Step 7).
-Use the archetype or family that best matches the business's positioning.
-Only change the `:root` color variables in globals.css — nothing else.
+Present the filled prompt to the user before proceeding. Say:
+> "Here's the v0 prompt for [Business Name]. Ready to generate?"
 
 ---
 
-#### 8b — Scaffold the repo
+#### 8b — Generate the site via v0
+
+**If v0 API key is configured** (env: `V0_API_KEY`):
 
 ```bash
-# 1. Copy the template
-cp -r C:/Users/grant/OneDrive/Documents/GitHub/startwithspark \
-      C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]
-
-# 2. Remove template git history
-cd C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]
-rm -rf .git
-
-# 3. Init fresh repo
-git init
-git checkout -b main
-
-# 4. Overwrite site-config.ts with generated content (see 8a)
-# 5. Update globals.css color variables from codex (see 8a)
-
-# 6. Commit
-git add .
-git commit -m "[add] [Business Name] demo site — generated from lead"
-
-# 7. Create GitHub repo and push
-gh repo create grantspark/[client-slug] --private --source=. --push
+# Submit prompt to v0 API and stream the generated Next.js code
+# v0 returns a complete Next.js + Tailwind project
+# Save output to C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]/
 ```
+
+**If no API key** (manual path):
+1. Copy the filled prompt from 8a
+2. Go to https://v0.dev
+3. Paste the prompt → generate
+4. Download the project zip → extract to `C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]/`
 
 **Client slug format:** lowercase, hyphens, no spaces. Example: `paragon-home-services`
 
 ---
 
-#### 8c — Deploy to Netlify (fully automated via CLI)
+#### 8c — Initialize repo and push to GitHub
+
+```bash
+cd C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]
+
+# Ensure next.config has static export
+# Verify: output: 'export' is set in next.config.ts
+
+git init
+git checkout -b main
+git add .
+git commit -m "[add] [Business Name] demo site — generated via v0"
+
+gh repo create grantspark/[client-slug] --private --source=. --push
+```
+
+---
+
+#### 8d — Deploy to Netlify (fully automated via CLI)
 
 **Prerequisites:** Netlify CLI installed (`npm install -g netlify-cli`) and authenticated (`netlify login`). Account slug: `grant-plw4ylu`.
 
 ```bash
 # 1. Create the Netlify site (non-interactive — avoids Windows prompt bug)
 netlify api createSite --data '{"body": {"name": "[client-slug]", "account_slug": "grant-plw4ylu"}}'
-# → Returns site ID (e.g. c82ede9b-...) and URL ([client-slug].netlify.app)
+# → Copy the site ID from the response (e.g. c82ede9b-...)
 
-# 2. Build the site
+# 2. Build
 cd C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]
+pnpm install
 pnpm build
 
-# 3. Deploy using the site ID (NOT the site name — name lookup fails)
-netlify deploy --prod --dir=out --site [site-id-from-step-1]
+# 3. Deploy — use site ID, NOT site name (name lookup fails on Windows)
+netlify deploy --prod --dir=out --site [site-id]
 ```
 
-**Note:** `netlify sites:create` crashes on Windows with "unsettled top-level await". Always use `netlify api createSite` instead. Always use the site ID (not site name) in the deploy command.
+**Note:** `netlify sites:create` crashes on Windows with "unsettled top-level await". Always use `netlify api createSite`. Always pass the site ID to `--site`, not the name.
 
 Netlify assigns URL: `https://[client-slug].netlify.app`
 
@@ -419,7 +379,7 @@ DEMO SITE — [Business Name]
 Live at: https://[slug].netlify.app
 GitHub:  https://github.com/grantspark/[client-slug]
 
-Sections: Hero / Services / About / Contact
+Sections: Hero / Services / CTA / Form
 Phone CTA: [(XXX) XXX-XXXX]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
