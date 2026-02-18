@@ -199,6 +199,157 @@ After all tasks and comments are done, confirm in chat:
 
 ---
 
+### Step 7 — Build Demo Site (triggered on request)
+
+User says: `build site for lead X`, `build demo for [business]`, or `build site`
+
+**Do not run automatically.** Wait for user to request a demo site for a specific lead.
+
+**Template:** `startwithspark` repo (`C:/Users/grant/OneDrive/Documents/GitHub/startwithspark`)
+- One-page Next.js static export
+- Sections: Hero → Services Grid → Mid Banner → About → CTA Banner → Contact → Footer
+- Single config file: `site-config.ts` — all copy, brand, CTAs live here
+- Components pull directly from config — no component edits needed for new clients
+
+---
+
+#### 7a — Generate site-config.ts
+
+Using data from the lead's markdown entry + any research from Facebook/Google Maps, populate:
+
+```typescript
+export const siteConfig = {
+  brand: {
+    name: "[Business Name]",
+    tagline: "[Tagline or city + category]",
+    email: "",          // leave blank if unknown
+    domain: "",         // leave blank — no domain yet
+    location: "[City], FL",
+  },
+  hero: {
+    headline: "[Transformation or tagline headline]",
+    subhead: "[What they do + why it matters in 1-2 sentences]",
+    ctaText: "Call Us Now",
+    ctaUrl: "#contact",
+  },
+  services: {
+    sectionHeader: "How We Can Help",
+    items: [
+      // 4-6 plausible services based on category
+      // Use their Google Maps category to infer what they likely offer
+      // Each: { title, description, icon }
+      // Icons: globe, megaphone, search, chart, palette, lightbulb, home, wrench, star, phone
+    ],
+  },
+  midBanner: {
+    tagline: "[Short punchy statement — 4-6 words]",
+    subtext: "[One sentence supporting the tagline]",
+    ctaText: "Call Now",
+    ctaUrl: "#contact",
+  },
+  about: {
+    sectionHeader: "About [Business Name]",
+    body: [
+      "[Owner name / business history / what makes them different]",
+      "[Second paragraph — local roots, approach, commitment]",
+    ],
+  },
+  ctaBanner: {
+    headline: "[Action-oriented headline with their phone number or CTA]",
+    ctaText: "Call (XXX) XXX-XXXX",
+    ctaUrl: "tel:+1XXXXXXXXXX",
+  },
+  contact: {
+    sectionHeader: "Get In Touch",
+    subtext: "[Address + phone. Simple and direct.]",
+  },
+  footer: {
+    tagline: "[Business Name] — [City], FL",
+    subtext: "[One-liner about what they do]",
+    year: new Date().getFullYear(),
+  },
+}
+```
+
+**Color palette:** Adjust `globals.css` CSS variables to match the lead's brand feel.
+- Default (Spark): coral/pink gradient on white
+- For home services / contractors: earthy tones — slate, warm cream, olive or terracotta accent
+- For beauty / salons: soft, feminine — blush, dusty rose, gold
+- For chiropractors: clean, clinical — navy, white, teal accent
+
+Only change the `:root` color variables — nothing else in globals.css.
+
+---
+
+#### 7b — Scaffold the repo
+
+```bash
+# 1. Copy the template
+cp -r C:/Users/grant/OneDrive/Documents/GitHub/startwithspark \
+      C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]
+
+# 2. Remove template git history
+cd C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]
+rm -rf .git
+
+# 3. Init fresh repo
+git init
+git checkout -b main
+
+# 4. Overwrite site-config.ts with generated content (see 7a)
+# 5. Update globals.css color variables (see 7a)
+
+# 6. Commit
+git add .
+git commit -m "[add] [Business Name] demo site — generated from lead"
+
+# 7. Create GitHub repo and push
+gh repo create grantspark/[client-slug] --private --source=. --push
+```
+
+**Client slug format:** lowercase, hyphens, no spaces. Example: `paragon-home-services`
+
+---
+
+#### 7c — Deploy to Netlify
+
+**One-time per demo site** (dashboard walkthrough, ~5 min):
+
+1. Go to [app.netlify.com](https://app.netlify.com)
+2. Add new site → Import from GitHub → select `grantspark/[client-slug]`
+3. Build settings (auto-detected or set manually):
+   - Build command: `pnpm build`
+   - Publish directory: `out`
+   - Node version env var: `NODE_VERSION=20`
+4. Click Deploy — builds in ~2 min
+5. Netlify assigns URL: `https://[random-name].netlify.app`
+
+After deploy, confirm in chat:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DEMO SITE — [Business Name]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Live at: https://[slug].netlify.app
+GitHub:  https://github.com/grantspark/[client-slug]
+
+Sections: Hero / Services / About / Contact
+Phone CTA: [(XXX) XXX-XXXX]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Ready to call. Pull up the URL before you dial.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Update the ClickUp task for this lead with the demo URL in a comment:
+```
+Tool: clickup_create_task_comment
+Comment: "Demo site live: [URL] — ready to use on cold call"
+```
+
+---
+
 ## Error Handling
 
 - **Apify returns 0 results for an industry** — skip that industry, note it in the markdown header, continue with others.
