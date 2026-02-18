@@ -388,18 +388,26 @@ gh repo create grantspark/[client-slug] --private --source=. --push
 
 ---
 
-#### 8c — Deploy to Netlify
+#### 8c — Deploy to Netlify (fully automated via CLI)
 
-**One-time per demo site** (dashboard walkthrough, ~5 min):
+**Prerequisites:** Netlify CLI installed (`npm install -g netlify-cli`) and authenticated (`netlify login`). Account slug: `grant-plw4ylu`.
 
-1. Go to [app.netlify.com](https://app.netlify.com)
-2. Add new site → Import from GitHub → select `grantspark/[client-slug]`
-3. Build settings (auto-detected or set manually):
-   - Build command: `pnpm build`
-   - Publish directory: `out`
-   - Node version env var: `NODE_VERSION=20`
-4. Click Deploy — builds in ~2 min
-5. Netlify assigns URL: `https://[random-name].netlify.app`
+```bash
+# 1. Create the Netlify site (non-interactive — avoids Windows prompt bug)
+netlify api createSite --data '{"body": {"name": "[client-slug]", "account_slug": "grant-plw4ylu"}}'
+# → Returns site ID (e.g. c82ede9b-...) and URL ([client-slug].netlify.app)
+
+# 2. Build the site
+cd C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]
+pnpm build
+
+# 3. Deploy using the site ID (NOT the site name — name lookup fails)
+netlify deploy --prod --dir=out --site [site-id-from-step-1]
+```
+
+**Note:** `netlify sites:create` crashes on Windows with "unsettled top-level await". Always use `netlify api createSite` instead. Always use the site ID (not site name) in the deploy command.
+
+Netlify assigns URL: `https://[client-slug].netlify.app`
 
 After deploy, confirm in chat:
 
