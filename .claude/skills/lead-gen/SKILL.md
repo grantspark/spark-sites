@@ -311,21 +311,47 @@ Present the filled prompt to the user before proceeding. Say:
 
 #### 8b — Generate the site via v0
 
-**If v0 API key is configured** (env: `V0_API_KEY`):
+**Client slug format:** lowercase, hyphens, no spaces. Example: `paragon-home-services`
 
-```bash
-# Submit prompt to v0 API and stream the generated Next.js code
-# v0 returns a complete Next.js + Tailwind project
-# Save output to C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]/
+**API path (preferred):**
+
+Read the key from Windows user env (works without restarting the session):
+
+```powershell
+$key = [System.Environment]::GetEnvironmentVariable('V0_API_KEY', 'User')
 ```
 
-**If no API key** (manual path):
+Write the assembled prompt to a temp file to avoid JSON escaping issues:
+
+```powershell
+# Save prompt to temp file
+Set-Content -Path "$env:TEMP\v0-prompt.txt" -Value @"
+[PASTE ASSEMBLED PROMPT HERE]
+"@
+
+# Build request body
+$prompt = Get-Content "$env:TEMP\v0-prompt.txt" -Raw
+$body = @{ model = "v0-1.5-md"; messages = @(@{ role = "user"; content = $prompt }) } | ConvertTo-Json -Depth 5
+
+# Call v0 API
+$response = Invoke-RestMethod `
+  -Uri "https://api.v0.dev/v1/chat/completions" `
+  -Method POST `
+  -Headers @{ Authorization = "Bearer $key"; "Content-Type" = "application/json" } `
+  -Body $body
+
+# Save response content to file for Claude to parse
+$response.choices[0].message.content | Set-Content "$env:TEMP\v0-output.md"
+Write-Host "Response saved to $env:TEMP\v0-output.md"
+```
+
+After the API call, Claude reads `$env:TEMP\v0-output.md` and extracts the code blocks into files at `C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]/`. Each code block is prefixed with its file path (e.g. `// app/page.tsx`). Claude creates the directories and writes each file.
+
+**Manual path (fallback — no API key or API issues):**
 1. Copy the filled prompt from 8a
 2. Go to https://v0.dev
 3. Paste the prompt → generate
-4. Download the project zip → extract to `C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]/`
-
-**Client slug format:** lowercase, hyphens, no spaces. Example: `paragon-home-services`
+4. Click **Code** → **Download** → extract zip to `C:/Users/grant/OneDrive/Documents/GitHub/[client-slug]/`
 
 ---
 
