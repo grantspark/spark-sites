@@ -9,9 +9,14 @@
 
 This repo uses Main Branch. Engine lives at: `~/Documents/GitHub/vip`
 
+**Additional tool repos:**
+- `~/Documents/GitHub/demo-drop` — Sales pipeline (Prospect Pro + Demo Drop)
+
+Both are linked via `additionalDirectories` in `.claude/settings.local.json`.
+
 Start every session:
 ```bash
-cd ~/Documents/GitHub/vip
+cd ~/Documents/GitHub/spark-sites
 claude
 /start
 ```
@@ -120,10 +125,28 @@ spark-sites/
 
 ## Key Skills
 
-| Need | Skill |
-|------|-------|
-| Research, decide, update reference | `/think` |
-| Generate ads | `/ads` |
-| Create organic content | `/organic` |
-| Build landing pages | `/site` |
-| Help with anything | `/help` |
+| Need | Skill | Source |
+|------|-------|--------|
+| Research, decide, update reference | `/think` | vip |
+| Generate ads | `/ads` | vip |
+| Create organic content | `/organic` | vip |
+| Build landing pages | `/site` | vip |
+| Help with anything | `/help` | vip |
+| **Find prospect leads** | **`/prospect-pro`** | **demo-drop** |
+| **Build demo site for a lead** | **`/demo-drop`** | **demo-drop** |
+
+### Sales Pipeline (Demo Drop + Prospect Pro)
+
+These two skills power the Spark Sites cold outreach pipeline. They live in the `demo-drop` repo (linked via `additionalDirectories` in `.claude/settings.local.json`).
+
+**`/prospect-pro`** — Scans Google Maps for businesses in Polk County with no/weak digital presence. Returns 5 qualified leads, pushes approved ones to ClickUp (Spark Sites Sales list).
+
+**`/demo-drop`** — Takes any lead (from Prospect Pro, ClickUp, or manual) and builds a live demo website via v0 API, deploys to Netlify. Show up to the cold call with proof.
+
+**Config:** All agency settings (geography, industries, Netlify slug, GitHub org, ClickUp list) live in `demo-drop.config.yaml` in the demo-drop repo.
+
+**Bridge links:** Skill discovery requires bridge copies at `.claude/skills/prospect-pro/` and `.claude/skills/demo-drop/` (gitignored). If these are missing, recreate them:
+```bash
+cp -r ~/Documents/GitHub/demo-drop/.claude/skills/prospect-pro .claude/skills/
+cp -r ~/Documents/GitHub/demo-drop/.claude/skills/demo-drop .claude/skills/
+```
