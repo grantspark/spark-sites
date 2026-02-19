@@ -1,0 +1,8 @@
+# Seen leads — do not re-prospect these businesses
+# Format: Business Name|Phone|Status
+# Statuses: prospect (in pipeline), won (closed deal), lost (didn't close / archived)
+Paragon Home Services|(863) 666-1199|prospect
+Right Connect Home Services|(407) 285-0303|prospect
+Lucido Chiropractor|(863) 683-8006|prospect
+Puentes David R DC|(863) 533-2766|prospect
+Cielo Hair & Spa|(863) 583-4681|prospect
