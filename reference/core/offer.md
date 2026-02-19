@@ -16,11 +16,12 @@ Your growth partner. We combine strategy, education, and execution to help small
 ## The Model
 
 **Entry points:**
-1. **Websites** → Discovery call → Ongoing growth partnership
-2. **SEO / AI optimization** → Leads to broader marketing services
-3. **Strategy sessions** → Direct entry for businesses that need direction first
-4. **Education** (webinars, courses) → Demonstrates expertise → Partnership
-5. **Influencer events** → Soft openings for local businesses
+1. **Starter Site** → Live demo on cold call → Hosting client → Discovery call → Growth partnership
+2. **Websites** (direct) → Discovery call → Ongoing growth partnership
+3. **SEO / AI optimization** → Leads to broader marketing services
+4. **Strategy sessions** → Direct entry for businesses that need direction first
+5. **Education** (webinars, courses) → Demonstrates expertise → Partnership
+6. **Influencer events** → Soft openings for local businesses
 
 **Core insight:** The partnership is the model. Some clients enter through a website, others through a strategy session, others through education. Every entry point leads to the same place — an ongoing growth relationship where we strategize, execute, and educate together.
 
@@ -28,11 +29,12 @@ Your growth partner. We combine strategy, education, and execution to help small
 
 | Service | Entry Price | Notes |
 |---------|-------------|-------|
-| Websites | $500–$3,500+ | Links pages to full e-commerce |
+| Websites | $25/mo–$3,500+ | Starter Site (demo on cold call) to full e-commerce |
 | SEO | $900 one-time or $500–$1K/mo | Includes Content Bot option |
 | Google/Facebook Ads | $350 setup + $350–$1,500/mo | Based on ad spend |
 | Social Media | Varies | Content management |
-| Strategy/Consulting | $120/hr | Currently under-productized |
+| Strategy Sessions | $350/session | Structured 90-min sessions + written deliverable (Messaging, SEO, Ads, etc.) |
+| Consulting (hourly) | $120/hr | Follow-up work, ad-hoc support, implementation questions |
 | Influencer Events | Custom | Nicole's specialty |
 | Education | TBD | Courses, webinars, library |
 
@@ -50,6 +52,6 @@ Your growth partner. We combine strategy, education, and execution to help small
 
 ## Known Gaps (To Address)
 
-- Strategy sessions need productizing (leaving money on the table)
+- ~~Strategy sessions need productizing~~ → Done. $350 structured sessions with deliverables. See `offers/strategy/`
 - Educational library not yet launched
 - Webinars paused but need to restart
