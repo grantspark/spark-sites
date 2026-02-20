@@ -142,7 +142,7 @@ Outside reference: no immediate changes to legal, domains, or collateral until t
 ## Open Questions (Remaining)
 
 1. ~~What should the parent brand be called?~~ **Partially resolved (2026-02-20):** Brand is a variant of "Spark" / "Spark Growth Partner" / "Spark Growth Agency" — exact name TBD. Domain locked: **sparkmygrowth.com**. startwithspark.com remains as vanity/legacy.
-2. What does Nicole think about the direction?
-3. How do we introduce the parent brand to existing clients?
+2. ~~What does Nicole think about the direction?~~ **Resolved (2026-02-20):** Nicole is in full agreement.
+3. ~~How do we introduce the parent brand to existing clients?~~ **Resolved (2026-02-20):** Three-channel rollout — email sequence, organic content, cross-marketing. See `decisions/2026-02-20-parent-brand-rollout-strategy.md`.
 4. ~~Does the parent brand need its own website, or does sparkmysite.com evolve?~~ **Resolved (2026-02-20):** Separate WordPress install on sparkmygrowth.com. See decision below.
 5. What's the timeline for soft-launching the parent brand?
