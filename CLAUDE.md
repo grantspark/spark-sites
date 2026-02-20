@@ -109,13 +109,21 @@ spark-sites/
 **Core Values:** Educate, Empower, Encourage
 
 **Location:** Lakeland, FL
-**Parent brand domain:** startwithspark.com
+
+**Domains:**
+
+| Domain | Purpose |
+|--------|---------|
+| startwithspark.com | Parent brand |
+| sparkmysite.com | Websites |
+| sparkmycampaign.com | Client dashboards (spark-dashboards repo) |
+| sparkmygrowth.com | Consulting / messaging / coaching |
 
 ---
 
 ## Known Gaps
 
-- [ ] Strategy sessions need productizing
+- [x] Strategy sessions need productizing → Messaging Strategy Session ($350, 90 min) live in `reference/offers/strategy/`
 - [ ] Educational library not yet launched
 - [ ] Webinars paused — need to restart
 - [ ] Social media pricing needs clearer structure
