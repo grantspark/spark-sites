@@ -14,7 +14,7 @@ This repo uses Main Branch. Engine lives at: `~/Documents/GitHub/vip`
 
 Both are linked via `additionalDirectories` in `.claude/settings.local.json`.
 
-**Parent repo:** `~/Documents/GitHub/grant-sparks` (Nova Prime orchestrator)
+**Parent repo:** `~/Documents/GitHub/grant-sparks` (Lumen orchestrator)
 
 Start every session:
 ```bash
