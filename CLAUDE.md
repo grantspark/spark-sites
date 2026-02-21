@@ -33,11 +33,7 @@ claude
 
 ## Team
 
-| Name | Role |
-|------|------|
-| Grant Sparks | CEO, Sales Lead, Sales Engineering |
-| Nicole Rhea | Social Media & Influencer Specialist, Professor of Marketing at Southeastern |
-| Amber Beardmore | Production Manager, Chief Creative Officer |
+**Source of truth:** `grant-sparks/reference/brand/team.md` (linked via additionalDirectories)
 
 ---
 
