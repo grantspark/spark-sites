@@ -161,6 +161,63 @@ You enter month 7 with **$6,200 less debt**, **$8,000 less spent**, and **a full
 
 ---
 
+## CC Paydown Scenarios (Freed Cash Redirection)
+
+All three scenarios share the same LOC amortization. The difference is how much of the freed ~$1,322/month goes toward credit cards. CC interest rate: ~28% APR (2.333%/month).
+
+### Scenario A: Minimum Only ($750/mo to CC)
+
+| Month | LOC Balance | CC Balance | Total Debt | Monthly Outflow |
+|-------|------------|------------|------------|-----------------|
+| **0** | $10,000 | $25,000 | **$35,000** | — |
+| **1** | $9,699 | $24,833 | **$34,532** | $1,488 |
+| **2** | $9,385 | $24,662 | **$34,047** | $1,488 |
+| **3** | $9,057 | $24,487 | **$33,544** | $1,488 |
+| **4** | $8,715 | $24,308 | **$33,023** | $1,488 |
+| **5** | $8,358 | $24,125 | **$32,483** | $1,488 |
+| **6** | $0 | $21,923 | **$21,923** | — |
+
+CC barely moves. Minimums mostly cover interest. Pressable surplus ($2,015) provides the only real CC hit.
+
+### Scenario B: +$750 Extra ($1,500/mo to CC)
+
+| Month | LOC Balance | CC Balance | Total Debt | Monthly Outflow |
+|-------|------------|------------|------------|-----------------|
+| **0** | $10,000 | $25,000 | **$35,000** | — |
+| **1** | $9,699 | $24,083 | **$33,782** | $2,238 |
+| **2** | $9,385 | $23,145 | **$32,530** | $2,238 |
+| **3** | $9,057 | $22,185 | **$31,242** | $2,238 |
+| **4** | $8,715 | $21,203 | **$29,918** | $2,238 |
+| **5** | $8,358 | $20,197 | **$28,555** | $2,238 |
+| **6** | $0 | $17,153 | **$17,153** | — |
+
+### Scenario C: +$1,000 Extra ($1,750/mo to CC)
+
+| Month | LOC Balance | CC Balance | Total Debt | Monthly Outflow |
+|-------|------------|------------|------------|-----------------|
+| **0** | $10,000 | $25,000 | **$35,000** | — |
+| **1** | $9,699 | $23,833 | **$33,532** | $2,488 |
+| **2** | $9,385 | $22,639 | **$32,024** | $2,488 |
+| **3** | $9,057 | $21,417 | **$30,474** | $2,488 |
+| **4** | $8,715 | $20,167 | **$28,882** | $2,488 |
+| **5** | $8,358 | $18,888 | **$27,246** | $2,488 |
+| **6** | $0 | $15,563 | **$15,563** | — |
+
+### All Scenarios at Month 6
+
+| | Do Nothing | Min Only | +$750 | +$1,000 |
+|--|-----------|----------|-------|---------|
+| CC Balance | $27,000 | $21,923 | $17,153 | $15,563 |
+| LOC Balance | $0 | $0 | $0 | $0 |
+| **Total Debt** | **$27,000** | **$21,923** | **$17,153** | **$15,563** |
+| Debt Reduced | $0 | $5,077 | $9,847 | $11,437 |
+| Monthly Outflow | $2,810 | $1,488 | $2,238 | $2,488 |
+| vs. Do Nothing | — | -$1,322/mo | -$572/mo | -$322/mo |
+
+Even the most aggressive scenario (+$1,000) still costs **$322/month less** than doing nothing. You pay less AND destroy debt faster.
+
+---
+
 ## Final Verdict
 
 **The deal still works.** The 6-month delay costs ~$2,400 in LOC interest that wouldn't exist if the $10K came immediately. But you're trading $2,400 in extra interest to eliminate $12,000 in Flywheel payments — roughly a **5:1 return on the carry cost.**
