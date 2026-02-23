@@ -120,6 +120,47 @@ Monthly rate: 52.4% / 12 = 4.367%
 
 ---
 
+## Month-by-Month Debt Tracker
+
+Assumes ~$1,000/month of freed cash redirected toward credit cards (conservative — $1,322 freed but some goes to operations).
+
+### Execute the Plan
+
+| Month | LOC Balance | CC Balance | Total Debt | Monthly Outflow | Notes |
+|-------|------------|------------|------------|-----------------|-------|
+| **0 (Start)** | $10,000 | $25,000 | **$35,000** | — | Borrow $10K. $8K→Pressable, $2K→cards |
+| **1** | $9,699 | $24,583 | **$34,282** | $1,488 | $738 LOC + $750 CC min. ~$1K freed→cards |
+| **2** | $9,385 | $24,156 | **$33,541** | $1,488 | |
+| **3** | $9,057 | $23,719 | **$32,776** | $1,488 | |
+| **4** | $8,715 | $23,271 | **$31,986** | $1,488 | |
+| **5** | $8,358 | $22,812 | **$31,170** | $1,488 | |
+| **6** | $0 | $20,797 | **$20,797** | — | $10K arrives. Pay off LOC ($7,985). $2,015→cards |
+
+### Do Nothing (Comparison)
+
+| Month | LOC Balance | CC Balance | Total Debt | Monthly Outflow | Notes |
+|-------|------------|------------|------------|-----------------|-------|
+| **0** | $0 | $27,000 | **$27,000** | — | |
+| **1** | $0 | $27,000 | **$27,000** | $2,810 | Minimums barely cover interest |
+| **2** | $0 | $27,000 | **$27,000** | $2,810 | |
+| **3** | $0 | $27,000 | **$27,000** | $2,810 | |
+| **4** | $0 | $27,000 | **$27,000** | $2,810 | |
+| **5** | $0 | $27,000 | **$27,000** | $2,810 | |
+| **6** | $0 | $27,000 | **$27,000** | $2,810 | CC balance stays flat — no progress |
+
+### Side-by-Side at Month 6
+
+| | Do Nothing | Execute Plan |
+|--|-----------|-------------|
+| Total debt | $27,000 | **$20,797** |
+| Debt reduced | $0 | **$6,203** |
+| Total paid out (6 months) | ~$16,860 | ~$8,928 |
+| Hosting paid through | Month-to-month | 12 months |
+
+You enter month 7 with **$6,200 less debt**, **$8,000 less spent**, and **a full year of hosting already paid for**.
+
+---
+
 ## Final Verdict
 
 **The deal still works.** The 6-month delay costs ~$2,400 in LOC interest that wouldn't exist if the $10K came immediately. But you're trading $2,400 in extra interest to eliminate $12,000 in Flywheel payments — roughly a **5:1 return on the carry cost.**
