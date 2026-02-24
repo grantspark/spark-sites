@@ -1,7 +1,7 @@
 ---
 type: decision
 date: 2026-02-14
-status: proposed
+status: accepted
 urgency: high
 ---
 
@@ -92,7 +92,7 @@ Also: Bulk copies handed to every prospect who can't afford services.
 ### What the Book IS
 
 - 12-15 chapters of what actually works, based on 857+ real clients
-- Structured around a proprietary framework (NAME TBD)
+- Structured around The SPARK Method — a proprietary 5-tier marketing framework
 - Matches Spark's experience with their audience's felt pain
 - Predicts the future: how SMBs need to adjust NOW for a post-AI world
 - Contains real case studies, real numbers, real systems
@@ -151,22 +151,22 @@ Also: Bulk copies handed to every prospect who can't afford services.
 
 Five-tier pyramid. Build from the bottom up. Most SMBs skip to the top and wonder why it doesn't work. Each tier has a "what AI changed" element.
 
-**Framework name: TBD** (acronym possible -- 5 tiers, 5 letters in SPARK)
+**Framework name: The SPARK Method** (CONFIRMED 2026-02-24)
 
 ```
-         5. AMPLIFY
+         K — KINDLE the fire
         (Paid ads, 27 impressions)
        ─────────────────────
-         4. OUTREACH
+         R — REACH your market
         (DMs, events, groups)
        ─────────────────────
-         3. CONTENT
+         A — ATTRACT with content
         (Daily, 10x, value-first)
        ─────────────────────
-         2. IDENTITY
+         P — POSITION your brand
         (You ARE the brand, messaging, website)
        ─────────────────────
-         1. MINDSET
+         S — STAND for something
         (Marketing is your #1 job)
 ```
 
@@ -174,19 +174,19 @@ Five-tier pyramid. Build from the bottom up. Most SMBs skip to the top and wonde
 
 | Tier | Felt Pain (from research) | Spark's Solution | AI Layer |
 |------|--------------------------|------------------|----------|
-| 1. Mindset | "I'm doing everything myself and drowning" (50% have zero marketing staff) | Accept that YOU are the marketing department | AI makes your messaging CLEARER -- not just faster. AI as a thinking partner for articulating what you actually do. |
-| 2. Identity | "I don't know what makes us different" / website as negative selection | Personal brand + messaging + website that doesn't repel | AI commoditized templates -- your HUMAN identity matters more, not less |
-| 3. Content | "Content creation is overwhelming" (34% cite this) | Daily content system that doesn't burn you out | AI assists but human-led content wins (creator-led outperforms by 5x) |
-| 4. Outreach | "I need more customers consistently" (60% say #1 challenge) | DMs + events + groups = systematic prospecting | AI can scale outreach but authentic relationships still close deals |
-| 5. Amplify | "I'm spending money and can't tell if it's working" (18% confidence) | Strategic awareness ads with 27-impression framework | AI-driven campaigns deliver 22% higher ROI -- but only if foundation is right |
+| S — STAND | "I'm doing everything myself and drowning" (50% have zero marketing staff) | Accept that YOU are the marketing department | AI makes your messaging CLEARER -- not just faster. AI as a thinking partner for articulating what you actually do. |
+| P — POSITION | "I don't know what makes us different" / website as negative selection | Personal brand + messaging + website that doesn't repel | AI commoditized templates -- your HUMAN identity matters more, not less |
+| A — ATTRACT | "Content creation is overwhelming" (34% cite this) | Daily content system that doesn't burn you out | AI assists but human-led content wins (creator-led outperforms by 5x) |
+| R — REACH | "I need more customers consistently" (60% say #1 challenge) | DMs + events + groups = systematic prospecting | AI can scale outreach but authentic relationships still close deals |
+| K — KINDLE | "I'm spending money and can't tell if it's working" (18% confidence) | Strategic awareness ads with 27-impression framework | AI-driven campaigns deliver 22% higher ROI -- but only if foundation is right |
 
 ### What Grant Has Seen Work (857 Clients) — Mapped to Tiers
 
-1. **Mindset**: Accepting that marketing is the top priority of their role
-2. **Identity**: Realizing they (and their team) ARE the brand. Stand-out messaging. Website as trust signal (people won't NOT do business because of it).
-3. **Content**: Regular daily content. 10x content output. Providing value in groups without selling.
-4. **Outreach**: Direct DMs. Attending niche expos, meetups, live events that target clients attend.
-5. **Amplify**: Ongoing awareness ad campaign on Meta and Google (27 impressions before CTA action).
+1. **S — STAND**: Accepting that marketing is the top priority of their role
+2. **P — POSITION**: Realizing they (and their team) ARE the brand. Stand-out messaging. Website as trust signal (people won't NOT do business because of it).
+3. **A — ATTRACT**: Regular daily content. 10x content output. Providing value in groups without selling.
+4. **R — REACH**: Direct DMs. Attending niche expos, meetups, live events that target clients attend.
+5. **K — KINDLE**: Ongoing awareness ad campaign on Meta and Google (27 impressions before CTA action).
 
 ### Models to Reference (Decided Per-Tier as We Build)
 
@@ -207,7 +207,7 @@ Grant loves these models. Each will be evaluated tier-by-tier -- some referenced
 
 ## Open Questions (Remaining)
 
-1. **Framework name** — Acronym? SPARK mapping? Something else?
+1. ~~**Framework name**~~ — **DECIDED: The SPARK Method** (2026-02-24)
 2. **Final book title** — "The No Bullshit Marketing Masterplan" is strong but may limit retail distribution
 3. **Which real client stories become case studies?** — Need 2-3 compelling before/after
 4. **How does the Quick Start Guide relate?** — "First 30 Days" chapter, separate free lead magnet, or both?
@@ -226,7 +226,7 @@ Reference files to be updated as framework develops:
 2. ~~Map patterns onto demand research~~ ✅ DONE
 3. ~~Confirm framework hierarchy~~ ✅ DONE
 4. Build out each tier (step by step, discovering model references as we go)
-5. Name the framework
+5. ~~Name the framework~~ ✅ DONE — The SPARK Method (2026-02-24)
 6. Finalize chapter outline
 7. Decide on title
 8. Begin writing
