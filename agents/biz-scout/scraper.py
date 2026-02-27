@@ -287,44 +287,42 @@ def download_daily_file(data_dir: str, date_str: str = None) -> str | None:
     except ValueError:
         pass
 
-    # First, list the directory to see what's available
-    print(f"\n  Checking daily files in {SFTP_DAILY_DIR}...")
-    available = sftp_list_directory(SFTP_DAILY_DIR)
+    # Daily files live inside a year subdirectory, e.g. /Public/doc/cor/2026/20260226c.txt
+    try:
+        dt = datetime.strptime(date_str, "%m%d%Y")
+    except ValueError:
+        dt = datetime.now()
+    year = dt.strftime("%Y")
+    daily_dir = f"{SFTP_DAILY_DIR}/{year}"
+
+    print(f"\n  Checking daily files in {daily_dir}...")
+    available = sftp_list_directory(daily_dir)
     if available:
-        print(f"  Available files: {available[:10]}")
+        print(f"  Available files (last 10): {available[-10:]}")
         if len(available) > 10:
-            print(f"  ... and {len(available) - 10} more")
+            print(f"  ({len(available)} total files)")
 
         # Try exact matches first
         for pattern in patterns:
             if pattern in available:
-                remote_path = f"{SFTP_DAILY_DIR}/{pattern}"
+                remote_path = f"{daily_dir}/{pattern}"
                 local_path = os.path.join(data_dir, f"daily_{date_str}.txt")
                 if sftp_download_file(remote_path, local_path):
                     return local_path
 
-        # Try to find the most recent file matching "cor" prefix
-        cor_files = [f for f in available if f.lower().startswith("cor")]
-        if cor_files:
-            latest = cor_files[-1]  # Assume sorted by date
-            print(f"  Using most recent corporate file: {latest}")
-            remote_path = f"{SFTP_DAILY_DIR}/{latest}"
-            local_path = os.path.join(data_dir, f"daily_{latest}")
-            if sftp_download_file(remote_path, local_path):
-                return local_path
-
-        # Try the most recent file of any kind
-        if available:
-            latest = available[-1]
-            print(f"  Trying most recent file: {latest}")
-            remote_path = f"{SFTP_DAILY_DIR}/{latest}"
+        # Try to find the most recent file matching the daily suffix (e.g. "c.txt")
+        daily_files = [f for f in available if f.endswith(SFTP_DAILY_SUFFIX)]
+        if daily_files:
+            latest = sorted(daily_files)[-1]
+            print(f"  Using most recent daily file: {latest}")
+            remote_path = f"{daily_dir}/{latest}"
             local_path = os.path.join(data_dir, f"daily_{latest}")
             if sftp_download_file(remote_path, local_path):
                 return local_path
     else:
-        # Directory listing failed — try patterns blindly
+        # Directory listing failed — try patterns blindly with year subdir
         for pattern in patterns:
-            remote_path = f"{SFTP_DAILY_DIR}/{pattern}"
+            remote_path = f"{daily_dir}/{pattern}"
             local_path = os.path.join(data_dir, f"daily_{date_str}.txt")
             if sftp_download_file(remote_path, local_path):
                 return local_path
