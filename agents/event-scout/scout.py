@@ -511,8 +511,9 @@ def _format_event_ranked(event: dict, rank, seen_label: str = "") -> list[str]:
 # Email Notification
 # ---------------------------------------------------------------------------
 
-def send_digest_email(digest: str, config: dict) -> None:
-    """Send the digest as an HTML email via Gmail SMTP."""
+def send_digest_email(digest: str, config: dict, new_events: list[dict] = None,
+                      seen_events: list[dict] = None, worth_watching: list[dict] = None) -> None:
+    """Send the digest as a styled HTML email via Gmail SMTP."""
     output_config = config.get("output", {})
     if not output_config.get("email", False):
         return
@@ -528,29 +529,10 @@ def send_digest_email(digest: str, config: dict) -> None:
         print("  WARNING: No email_to addresses configured. Skipping email.")
         return
 
-    today = datetime.now().strftime("%Y-%m-%d")
-    subject = f"Event Scout Digest — {today}"
+    today_str = datetime.now().strftime("%A, %b %d")
+    subject = f"Event Scout — {today_str}"
 
-    # Convert markdown digest to simple HTML
-    html_body = "<html><body style='font-family: -apple-system, sans-serif; max-width: 700px; margin: 0 auto; padding: 20px;'>"
-    for line in digest.split("\n"):
-        if line.startswith("---"):
-            html_body += "<hr>"
-        elif line.startswith("### "):
-            html_body += f"<h3>{line[4:]}</h3>"
-        elif line.startswith("## "):
-            html_body += f"<h2>{line[3:]}</h2>"
-        elif line.startswith("# "):
-            html_body += f"<h1>{line[2:]}</h1>"
-        elif line.startswith("- **"):
-            html_body += f"<p style='margin:2px 0 2px 20px;'>{line[2:]}</p>"
-        elif line.startswith("**"):
-            html_body += f"<p><strong>{line}</strong></p>"
-        elif line.startswith("*") and line.endswith("*"):
-            html_body += f"<p><em>{line.strip('*')}</em></p>"
-        elif line.strip():
-            html_body += f"<p>{line}</p>"
-    html_body += "</body></html>"
+    html_body = build_digest_html_(config, new_events or [], seen_events or [], worth_watching or [])
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
@@ -566,6 +548,170 @@ def send_digest_email(digest: str, config: dict) -> None:
         print(f"  Email sent to: {', '.join(email_to)}")
     except Exception as e:
         print(f"  ERROR sending email: {e}")
+
+
+def build_digest_html_(config: dict, new_events: list[dict],
+                        seen_events: list[dict], worth_watching: list[dict]) -> str:
+    """Build a fully styled HTML email matching the Grant Daily / BizDev Daily format."""
+    import html as html_mod
+
+    today_str = datetime.now().strftime("%A, %b %d")
+    date_from, date_to = get_date_range()
+    cities = ", ".join(config["location"]["cities"])
+
+    ranked_new = sorted(new_events, key=lambda e: e.get("score", 0), reverse=True)[:10]
+    ranked_seen = sorted(seen_events, key=lambda e: e.get("score", 0), reverse=True)
+    ranked_ww = sorted(worth_watching, key=lambda e: e.get("score", 0), reverse=True)
+
+    # Backfill seen events if not enough new
+    slots_remaining = 10 - len(ranked_new)
+    top_seen = ranked_seen[:max(slots_remaining, 3)] if slots_remaining > 0 else [
+        e for e in ranked_seen if e.get("score", 0) >= 7
+    ][:5]
+
+    h = '<!DOCTYPE html><html><head><meta charset="utf-8"></head>'
+    h += '<body style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;'
+    h += 'max-width:700px;margin:0 auto;padding:20px;color:#2c3e50;background:#ffffff;">'
+
+    # --- Header ---
+    h += '<div style="padding:20px;background:linear-gradient(135deg,#2ecc71 0%,#27ae60 100%);'
+    h += 'color:white;border-radius:8px;margin-bottom:20px;">'
+    h += '<div style="font-size:22px;font-weight:bold;">Event Scout</div>'
+    h += f'<div style="font-size:16px;margin-top:6px;">Events for {today_str}</div>'
+    h += f'<div style="font-size:13px;margin-top:8px;opacity:0.9;">{len(new_events)} new &middot; '
+    h += f'{len(seen_events)} previously seen &middot; {cities}</div>'
+    h += '</div>'
+
+    # --- Summary stats ---
+    top_score = ranked_new[0].get("score", 0) if ranked_new else 0
+    high_count = len([e for e in new_events if e.get("score", 0) >= 7])
+    h += '<div style="display:flex;gap:12px;margin-bottom:20px;">'
+    h += _stat_box_("New Events", str(len(new_events)), "#3498db")
+    h += _stat_box_("Score 7+", str(high_count), "#27ae60")
+    h += _stat_box_("Top Score", f"{top_score}/10", "#e74c3c" if top_score >= 8 else "#f39c12")
+    h += '</div>'
+
+    # --- New Events ---
+    if ranked_new:
+        h += '<h2 style="font-size:18px;color:#2c3e50;border-bottom:1px solid #eee;'
+        h += 'padding-bottom:8px;margin:0 0 12px 0;">New Events</h2>'
+        for rank, event in enumerate(ranked_new, 1):
+            h += _event_card_html_(event, rank, html_mod)
+    else:
+        h += '<div style="padding:15px;background:#f0f4ff;border-left:4px solid #3498db;border-radius:4px;margin-bottom:20px;">'
+        h += 'No new events found this run.</div>'
+
+    # --- Previously Seen ---
+    if top_seen:
+        label = "Events (Previously Seen)" if not ranked_new else "Also on Your Radar"
+        h += f'<h2 style="font-size:18px;color:#2c3e50;border-bottom:1px solid #eee;'
+        h += f'padding-bottom:8px;margin:20px 0 12px 0;">{label}</h2>'
+        h += '<p style="font-size:13px;color:#999;margin:0 0 12px 0;">These showed up in a previous scan and are still upcoming.</p>'
+        for event in top_seen:
+            times = event.get("times_seen", 1)
+            first = event.get("first_seen", "")
+            h += _event_card_html_(event, "", html_mod, seen_label=f"Seen {times}x since {first}")
+
+    # --- Worth Watching ---
+    if ranked_ww:
+        h += '<h2 style="font-size:18px;color:#2c3e50;border-bottom:1px solid #eee;'
+        h += 'padding-bottom:8px;margin:20px 0 12px 0;">Worth Watching — Coming Up Later</h2>'
+        h += '<p style="font-size:13px;color:#999;margin:0 0 12px 0;">Scored 8+ but beyond the next 3 weeks.</p>'
+        for event in ranked_ww:
+            h += _event_card_html_(event, "", html_mod)
+
+    # --- Footer ---
+    h += '<div style="border-top:1px solid #eee;padding-top:15px;margin-top:30px;'
+    h += 'font-size:12px;color:#95a5a6;text-align:center;">'
+    h += 'Generated by Event Scout (GitHub Actions)<br>'
+    h += f'Runs Wed/Fri at 8 AM ET | Scanning {date_from} to {date_to}<br>'
+    h += 'Powered by Spark Sites</div>'
+
+    h += '</body></html>'
+    return h
+
+
+def _stat_box_(label: str, value: str, color: str) -> str:
+    """Build a small stat box for the summary row."""
+    return (
+        f'<div style="flex:1;text-align:center;padding:12px;border:1px solid #eee;border-radius:8px;'
+        f'border-top:3px solid {color};">'
+        f'<div style="font-size:24px;font-weight:bold;color:{color};">{value}</div>'
+        f'<div style="font-size:11px;color:#999;margin-top:2px;">{label}</div></div>'
+    )
+
+
+def _event_card_html_(event: dict, rank, html_mod, seen_label: str = "") -> str:
+    """Build a styled card for a single event."""
+    score = event.get("score", 0)
+    title = html_mod.escape(event.get("title", "Untitled"))
+    reasoning = html_mod.escape(event.get("reasoning", ""))
+    location = html_mod.escape(event.get("location", "TBD"))
+    organizer = html_mod.escape(event.get("organizer", "Unknown"))
+    platform = html_mod.escape(event.get("platform", "Unknown"))
+    date_str = html_mod.escape(str(event.get("date", "TBD")))
+    time_str = html_mod.escape(str(event.get("time", "")))
+    price = html_mod.escape(str(event.get("price", "See event")))
+    attendees = event.get("attendees", "N/A")
+    url = event.get("url", "")
+    avatars = ", ".join(event.get("avatar_match", [])) or "General"
+
+    # Score color
+    if score >= 8:
+        score_color = "#27ae60"
+        score_bg = "#eafaf1"
+    elif score >= 6:
+        score_color = "#f39c12"
+        score_bg = "#fef9e7"
+    else:
+        score_color = "#95a5a6"
+        score_bg = "#f8f9fa"
+
+    rank_html = ""
+    if rank:
+        rank_html = (
+            f'<div style="width:28px;height:28px;border-radius:50%;background:#3498db;color:white;'
+            f'text-align:center;line-height:28px;font-weight:bold;font-size:13px;'
+            f'flex-shrink:0;margin-right:10px;">#{rank}</div>'
+        )
+
+    card = f'<div style="border:1px solid #eee;border-radius:8px;padding:15px;margin-bottom:12px;'
+    card += f'border-left:4px solid {score_color};">'
+
+    # Title row with score badge
+    card += '<div style="display:flex;align-items:center;margin-bottom:8px;">'
+    card += rank_html
+    card += f'<div style="flex:1;font-weight:bold;font-size:15px;color:#2c3e50;">'
+    if url:
+        card += f'<a href="{html_mod.escape(url)}" style="color:#2c3e50;text-decoration:none;">{title}</a>'
+    else:
+        card += title
+    card += '</div>'
+    card += f'<div style="background:{score_bg};color:{score_color};border-radius:10px;'
+    card += f'padding:3px 10px;font-weight:bold;font-size:13px;white-space:nowrap;margin-left:8px;">'
+    card += f'{score}/10</div></div>'
+
+    # Seen label
+    if seen_label:
+        card += f'<div style="font-size:12px;color:#9b59b6;margin-bottom:6px;font-style:italic;">{seen_label}</div>'
+
+    # Reasoning
+    if reasoning:
+        card += f'<div style="font-size:13px;color:#555;margin-bottom:8px;font-style:italic;">{reasoning}</div>'
+
+    # Detail grid
+    card += '<div style="display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12px;color:#666;">'
+    card += f'<div><strong>Date:</strong> {date_str} {time_str}</div>'
+    card += f'<div><strong>Location:</strong> {location}</div>'
+    card += f'<div><strong>Organizer:</strong> {organizer}</div>'
+    card += f'<div><strong>Attendees:</strong> {attendees}</div>'
+    card += f'<div><strong>Price:</strong> {price}</div>'
+    card += f'<div><strong>Platform:</strong> {platform}</div>'
+    card += f'<div><strong>Best for:</strong> {html_mod.escape(avatars)}</div>'
+    card += '</div>'
+
+    card += '</div>'
+    return card
 
 
 # ---------------------------------------------------------------------------
@@ -724,7 +870,8 @@ def main():
     print(f"  Seen events registry: {len(seen_registry)} total entries")
 
     # Send email notification
-    send_digest_email(digest, config)
+    send_digest_email(digest, config, new_events=new_events,
+                      seen_events=previously_seen, worth_watching=scored_outside)
 
     # Show top results summary
     ranked_new = sorted(new_events, key=lambda e: e.get("score", 0), reverse=True)
