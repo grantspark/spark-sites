@@ -26,24 +26,27 @@ Proceed with the arbitrage play. The 6-month delay does not break the strategy.
 - When the $10K arrives at month 6, it wipes the LOC (~$7,985) with ~$2,015 surplus to cards
 - Even the most aggressive CC paydown scenario ($1,750/mo to cards) still costs $322/month less than doing nothing
 
-## Key Numbers
+## Key Numbers (REVISED — Pressable purchased at $6,600/yr for 200 sites)
 
-| Metric | Value |
-|--------|-------|
-| Monthly improvement | ~$1,322 |
-| 6-month LOC carry cost | ~$2,413 |
-| 6-month Flywheel savings | $12,000 |
-| LOC balance when $10K arrives | ~$7,985 |
-| Surplus after LOC payoff | ~$2,015 |
+| Metric | Original Estimate | Revised (Actual) |
+|--------|-------------------|------------------|
+| Pressable annual cost | ~$8,300 (250 sites) | **$6,600 (200 sites)** |
+| LOC leftover for CC | $1,700 | **$3,400** |
+| Starting CC balance | $25,000 | **$23,600** |
+| Monthly improvement | ~$1,322 | **~$1,364** |
+| 6-month LOC carry cost | ~$2,413 | ~$2,413 |
+| 6-month Flywheel savings | $12,000 | $12,000 |
+| LOC balance when $10K arrives | ~$7,985 | ~$7,985 |
+| Surplus after LOC payoff | ~$2,015 | ~$2,015 |
 
-## CC Paydown Targets at Month 6
+## CC Paydown Targets at Month 6 (Revised)
 
 | Strategy | CC Balance | Total Debt | Monthly Outflow |
 |----------|------------|------------|-----------------|
 | Do nothing | $27,000 | $27,000 | $2,810 |
-| Min only ($750/mo) | $21,923 | $21,923 | $1,488 |
-| +$750 extra ($1,500/mo) | $17,153 | $17,153 | $2,238 |
-| +$1,000 extra ($1,750/mo) | $15,563 | $15,563 | $2,488 |
+| Min only ($708/mo) | $20,323 | $20,323 | $1,446 |
+| +$750 extra ($1,458/mo) | $15,553 | $15,553 | $2,196 |
+| +$1,000 extra ($1,708/mo) | $13,963 | $13,963 | $2,446 |
 
 ## Conditions for Success
 

@@ -26,6 +26,21 @@ This analysis audits the ChatGPT financial reasoning and provides an independent
 
 ---
 
+## UPDATE (2026-02-27): Pressable Plan Purchased
+
+**Actual purchase:** 200 sites at $6,600/year (not 250 sites at ~$8,300 as originally estimated).
+
+| | Original Estimate | Actual Purchase | Delta |
+|--|-------------------|-----------------|-------|
+| Sites | 250 | 200 | -50 |
+| Annual cost | ~$8,300 | $6,600 | **-$1,700** |
+| Monthly equivalent | ~$692 | $550 | -$142/mo |
+| Leftover from $10K LOC for CC | $1,700 | **$3,400** | +$1,700 |
+
+This improves every number in the analysis below. Starting CC balance drops from $25,000 to **$23,600**. Monthly cash flow improvement increases from ~$1,322 to **~$1,364**. All scenario tables below reflect the original estimates — see updated tables at the end of this section for revised numbers.
+
+---
+
 ## ChatGPT Accuracy Audit
 
 ### What ChatGPT Got Right
@@ -227,9 +242,39 @@ After month 6: no Flywheel, no LOC balance, reduced CC debt.
 ### The One Risk
 If the freed ~$1,300/month gets absorbed into operations instead of attacking credit cards, the arbitrage benefit evaporates. The plan only compounds if the freed cash is redirected to debt reduction.
 
-### Key Numbers to Remember
-- Monthly improvement: ~$1,322
+### Key Numbers to Remember (REVISED — Pressable purchased at $6,600)
+- Monthly improvement: ~$1,364
 - 6-month LOC carry cost: ~$2,413
 - 6-month Flywheel savings: $12,000
 - LOC balance when $10K arrives: ~$7,985
 - Surplus after LOC payoff: ~$2,015
+- Starting CC balance: $23,600 (was $25,000)
+- Extra CC principal hit on day one: $1,700 more than planned
+
+---
+
+## Revised Scenario Tables (Pressable at $6,600)
+
+Starting CC balance: $23,600 ($27K - $3,400 from LOC). CC interest: ~28% APR.
+
+### Updated Monthly Cash Flow
+
+|                  | Before    | After (Revised) |
+|------------------|-----------|-----------------|
+| Hosting          | $2,000 (Flywheel) | $0 (paid annually) |
+| LOC payment      | $0        | $738      |
+| CC minimums      | ~$810 (3% of $27K) | ~$708 (3% of $23.6K) |
+| **Total outflow** | **~$2,810** | **~$1,446** |
+
+**Net monthly improvement: ~$1,364/month**
+
+### Revised Month 6 Comparison
+
+| | Do Nothing | Min Only | +$750 | +$1,000 |
+|--|-----------|----------|-------|---------|
+| CC Balance | $27,000 | $20,323 | $15,553 | $13,963 |
+| LOC Balance | $0 | $0 | $0 | $0 |
+| **Total Debt** | **$27,000** | **$20,323** | **$15,553** | **$13,963** |
+| Debt Reduced | $0 | $6,677 | $11,447 | $13,037 |
+
+The $1,700 savings on Pressable flows through as ~$1,600 better CC position at month 6 across every scenario.
