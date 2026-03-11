@@ -1,140 +1,140 @@
 ---
 type: digest
-date: 2026-03-06
+date: 2026-03-11
 agent: event-scout
 status: active
 ---
 
-# Event Scout Digest — 2026-03-06
+# Event Scout Digest — 2026-03-11
 
 **Business:** Spark Sites
 **Geography:** Lakeland, Tampa, Orlando, Winter Haven, Kissimmee, Brandon, St. Petersburg
-**Date range:** 2026-03-06 to 2026-03-27
-**38 new events | 33 previously seen | 71 total scored**
+**Date range:** 2026-03-11 to 2026-04-01
+**40 new events | 34 previously seen | 74 total scored**
 
 ---
 
 ## New Events
 
-### #1. 🌸 Women Business Owners Biweekly Networking Event – Featuring Melanie Vadzemnieks, CFRE (Score: 9/10)
+### #1. JLGL | 5th Annual Women’s Entrepreneurship Panel  (Score: 9/10)
 
-- **Why:** Specifically for women business owners in Polk County (Lakeland), making it a high-value networking opportunity.
-- **Date:** Thursday, March 26, 2026 at 8:30 AM – 10:00 AM EDT Thu, Mar 26 at 8:30 AM EDT
-- **Location:** 211 E Main St, Lakeland, FL 33801-4628, United States
+- **Why:** This event is in Lakeland, specifically for women entrepreneurs, and offers vendor opportunities, making it a perfect fit.
+- **Date:** Thursday, March 26, 2026 at 6:00 PM – 8:00 PM EDT Thu, Mar 26 at 6:00 PM EDT
+- **Location:** 90 Lake Morton Dr, Lakeland, FL, United States, Florida 33801
 - **Organizer:** 
-- **Attendees:** 4
+- **Attendees:** 61
 - **Price:** See event
 - **Found on:** Facebook
-- **Best for:** female_founder, local_business_owner, growing_entrepreneur
-- **Link:** https://www.facebook.com/events/961928142838832/
+- **Best for:** female_founder, growing_entrepreneur, local_business_owner
+- **Link:** https://www.facebook.com/events/2087774938727540/
 
-### #2. Women Entrepreneurship Conference 2026 (Score: 9/10)
+### #2. LAKELAND Business Networking Meeting, Meet your next referral partners (Score: 8/10)
 
-- **Why:** A conference specifically for women entrepreneurs is a perfect fit, especially for female founders and growing entrepreneurs looking for insights and connections.
-- **Date:** Saturday, March 7, 2026 at 8:00 AM EST Sat, Mar 7 at 8:00 AM EST
-- **Location:** South University
-- **Organizer:** 
-- **Attendees:** 1199
-- **Price:** See event
-- **Found on:** Facebook
-- **Best for:** female_founder, growing_entrepreneur
-- **Link:** https://www.facebook.com/events/734688869562312/
-
-### #3. Lakeland Business Networking Lunch -Sora Eatery-New Location Fridays JOIN Us and connect. (Score: 8/10)
-
-- **Why:** Lakeland-based business networking lunch, making it a strong opportunity to connect with local professionals.
-- **Date:** Friday, March 6, 2026 at 11:30 AM – 1:00 PM EST Fri, Mar 6 at 11:30 AM EST
-- **Location:** Sora Eatery 3900 Don Emerson Dr STE 201, 2nd Floor, Lakeland, FL 33811
-- **Organizer:** 
-- **Attendees:** 4
-- **Price:** See event
-- **Found on:** Facebook
-- **Best for:** local_business_owner, growing_entrepreneur
-- **Link:** https://www.facebook.com/events/911341637916524/
-
-### #4. Orlando Entrepreneurs Networking Mixer (Score: 7/10)
-
-- **Why:** Specifically for entrepreneurs, which is a good fit, but the location is Orlando, not Lakeland.
-- **Date:** 2026-03-26T22:00:00.000Z
+- **Why:** This Lakeland-based business networking meeting is a strong fit for connecting with local professionals and potential referral partners.
+- **Date:** 2026-03-13T15:30:00.000Z
 - **Location:** 
-- **Organizer:** Orlando Networking And Business Strategies Meetup Group
-- **Attendees:** 9
-- **Price:** Free
-- **Found on:** meetup
-- **Best for:** growing_entrepreneur, local_business_owner
-- **Link:** https://www.meetup.com/meetup-group-udsnxyci/events/313500188/
-
-### #5. Free Small Business Networking (Score: 7/10)
-
-- **Why:** A free small business networking event is likely to attract local business owners and entrepreneurs.
-- **Date:** Tuesday, March 10, 2026 at 5:00 PM – 7:00 PM CDT Tue, Mar 10 at 5:00 PM CDT
-- **Location:** Ana Perez, Realtor - Bob Wayne Realty Group - Nebraska Realty
-- **Organizer:** 
-- **Attendees:** 7
-- **Price:** See event
-- **Found on:** Facebook
-- **Best for:** local_business_owner, growing_entrepreneur
-- **Link:** https://www.facebook.com/events/783214194683579/
-
-### #6. Referral Networking Meeting Orlando Area (Score: 6/10)
-
-- **Why:** Referral networking in Orlando could be useful, but the distance makes it less valuable.
-- **Date:** 2026-03-11T12:00:00.000Z
-- **Location:** 
-- **Organizer:** Networking 4 Profit
-- **Attendees:** 7
+- **Organizer:** RGA Networking Professional Business Networking
+- **Attendees:** 4
 - **Price:** Free
 - **Found on:** meetup
 - **Best for:** local_business_owner, growing_entrepreneur
-- **Link:** https://www.meetup.com/n4profit/events/313173685/
+- **Link:** https://www.meetup.com/rga-networking-professional-business-networking/events/313463396/
 
-### #7. Crema West Small Business Networking (Score: 6/10)
+### #3. GOBN Networking Weekly Meeting  (Score: 7/10)
 
-- **Why:** This small business networking event is in Orlando, which is relatively close to Lakeland, and the focus on coffee suggests a casual and approachable environment.
-- **Date:** Friday 6 March 2026 at 09:00 EST Fri, 6 Mar at 09:00 EST
-- **Location:** Orlando Regional REALTOR® Association,  5421 Diplomat Cir., Orlando, FL
-- **Organizer:** 
-- **Attendees:** 9
-- **Price:** See event
-- **Found on:** Facebook
+- **Why:** This event focuses on leveraging networks for referrals and sales growth, making it a good fit for local business owners and growing entrepreneurs, although it is in Orlando.
+- **Date:** 2026-03-17T11:00:00.000Z
+- **Location:** 
+- **Organizer:** The Greater Orlando Business Network
+- **Attendees:** 5
+- **Price:** Free
+- **Found on:** meetup
 - **Best for:** local_business_owner, growing_entrepreneur
-- **Link:** https://www.facebook.com/events/1575957720298226/
+- **Link:** https://www.meetup.com/greater-orlando-business-network/events/313005593/
 
-### #8. ABC Orlando - Always Be Connecting (Networking) (Score: 5/10)
+### #4. New Tampa Business Networking, Connect with like minded professionals.  Join US! (Score: 7/10)
 
-- **Why:** General networking event that could attract some entrepreneurs, but lacks specific focus and location is not specified.
+- **Why:** This New Tampa networking event focuses on building meaningful connections for business growth, making it a good fit for local business owners and growing entrepreneurs in the Tampa area.
 - **Date:** 2026-03-17T15:30:00.000Z
 - **Location:** 
-- **Organizer:** ABC - Orlando - Always Be Connecting Networking
+- **Organizer:** RGA Networking Professional Business Networking
+- **Attendees:** 4
+- **Price:** Free
+- **Found on:** meetup
+- **Best for:** local_business_owner, growing_entrepreneur
+- **Link:** https://www.meetup.com/rga-networking-professional-business-networking/events/313525981/
+
+### #5. Grow Your Business with focused Referral Networking (Score: 7/10)
+
+- **Why:** BNI Tampa focuses on referral networking, which is valuable for local business owners and growing entrepreneurs seeking new clients and partnerships.
+- **Date:** 2026-03-18T11:30:00.000Z
+- **Location:** 
+- **Organizer:** BNI  Tampa -Referral based networking
+- **Attendees:** 2
+- **Price:** Free
+- **Found on:** meetup
+- **Best for:** local_business_owner, growing_entrepreneur
+- **Link:** https://www.meetup.com/bni-tampa-referral-based-networking/events/313539182/
+
+### #6. 2nd Women of Diversity Brunch!! (Score: 7/10)
+
+- **Why:** This event specifically targets women in business, which aligns well with our female founder avatar, and growing entrepreneurs.
+- **Date:** 2026-03-29T16:00:00.000Z
+- **Location:** 
+- **Organizer:** Women of Diversity Brunch Networking Florida
+- **Attendees:** 2
+- **Price:** Free
+- **Found on:** meetup
+- **Best for:** female_founder, growing_entrepreneur
+- **Link:** https://www.meetup.com/brunch-networking-florida/events/313612099/
+
+### #7. Crema at Nona's Networking event (Score: 7/10)
+
+- **Why:** Orlando is close enough to Lakeland, and a regular networking event at a restaurant is likely to attract some of our target avatars.
+- **Date:** Tuesday, March 17, 2026 at 8:30 AM – 9:30 AM EDT Tue, Mar 17 at 8:30 AM EDT
+- **Location:** Nona Blue Modern Tavern (Orlando, FL)
+- **Organizer:** 
+- **Attendees:** 0
+- **Price:** See event
+- **Found on:** Facebook
+- **Best for:** local_business_owner, growing_entrepreneur
+- **Link:** https://www.facebook.com/events/912563455280723/
+
+### #8. Business Networking Tampa at Riveters Tampa   (Score: 6/10)
+
+- **Why:** This Tampa-based networking event at Riveters aims to connect professionals and create opportunities, which could attract some local business owners and growing entrepreneurs, but is further away.
+- **Date:** 2026-03-13T15:30:00.000Z
+- **Location:** 
+- **Organizer:** RGA Networking Professional Business Networking
+- **Attendees:** 5
+- **Price:** Free
+- **Found on:** meetup
+- **Best for:** local_business_owner, growing_entrepreneur
+- **Link:** https://www.meetup.com/rga-networking-professional-business-networking/events/313463618/
+
+### #9. Coffee & Coworking (Score: 6/10)
+
+- **Why:** Coffee & Coworking could attract growing entrepreneurs and female founders looking for a collaborative workspace and networking opportunities in Tampa Bay.
+- **Date:** 2026-03-31T15:00:00.000Z
+- **Location:** 
+- **Organizer:** Hello Culture Tampa Bay
 - **Attendees:** 1
 - **Price:** Free
 - **Found on:** meetup
-- **Best for:** growing_entrepreneur, local_business_owner
-- **Link:** https://www.meetup.com/always-be-connecting-orlando/events/313610610/
+- **Best for:** growing_entrepreneur, female_founder
+- **Link:** https://www.meetup.com/hello-culture-tampa-bay/events/313731559/
 
-### #9. Orlando Devs social & Orlando Tech and Beer in March! (Score: 3/10)
+### #10. Makers Market at Lakeside Village  (Score: 6/10)
 
-- **Why:** This event is focused on developers, which is not our target audience, so it's not a good fit.
-- **Date:** 2026-03-24T22:00:00.000Z
-- **Location:** 
-- **Organizer:** Orlando Developers Meetup
-- **Attendees:** 30
-- **Price:** Free
-- **Found on:** meetup
-- **Best for:** General
-- **Link:** https://www.meetup.com/orlandodevs/events/313467748/
-
-### #10. Chamber Business After Hours at Floor Coverings International (Score: 3/10)
-
-- **Why:** Chamber event, but the location is in Michigan, making it irrelevant for Lakeland.
-- **Date:** Wednesday 11 March 2026 from 17:30-19:30 EDT Wed, 11 Mar at 17:30 EDT
-- **Location:** Floor Coverings International of Rockford and Lansing, 848 W. River Center Dr. NE Suite A, Comstock Park, MI
+- **Why:** The Makers Market at Lakeside Village could attract local business owners and event hosts looking for marketing opportunities, but it's not specifically a networking event.
+- **Date:** Sunday, March 22, 2026 at 12:00 PM – 5:00 PM EDT Sun, Mar 22 at 12:00 PM EDT
+- **Location:** 1479 Town Center Dr, Lakeland, FL, United States, Florida 33803
 - **Organizer:** 
-- **Attendees:** 14
+- **Attendees:** 406
 - **Price:** See event
 - **Found on:** Facebook
-- **Best for:** local_business_owner
-- **Link:** https://www.facebook.com/events/1657813532318701/
+- **Best for:** local_business_owner, event_host
+- **Link:** https://www.facebook.com/events/787086987021463/
 
 ---
 
@@ -142,85 +142,67 @@ status: active
 
 *These showed up in a previous scan and are still upcoming.*
 
-### LAKELAND Business Networking Meeting, Meet your next referral partners (Score: 8/10) *(Previously Seen)*
+### OrlandoPreneur Monthly Startup Happy Hour! (Score: 8/10) *(Previously Seen)*
 
-- **Status:** Seen 1x since 2026-03-04
-- **Why:** A Lakeland business networking meeting specifically aimed at referrals is a good opportunity to connect with local business owners and entrepreneurs.
-- **Date:** 2026-03-06T16:30:00.000Z
+- **Status:** Seen 3x since 2026-02-27
+- **Why:** The OrlandoPreneur happy hour is specifically for entrepreneurs and small business owners, making it a strong fit, and has a high attendee count.
+- **Date:** 2026-03-16T21:30:00.000Z
 - **Location:** 
-- **Organizer:** RGA Networking Professional Business Networking
-- **Attendees:** 4
+- **Organizer:** OrlandoPreneur™ Startup Happy Hour: Connect, Learn & Grow!
+- **Attendees:** 192
+- **Price:** Free
+- **Found on:** meetup
+- **Best for:** growing_entrepreneur, local_business_owner
+- **Link:** https://www.meetup.com/orlandopreneur/events/312403850/
+
+### In-Person Business Networking Night (Score: 8/10) *(Previously Seen)*
+
+- **Status:** Seen 3x since 2026-02-27
+- **Why:** A business-focused networking night in Land O Lakes is likely to attract local business owners and growing entrepreneurs interested in referrals and collaborations.
+- **Date:** 2026-03-11T22:30:00.000Z
+- **Location:** 
+- **Organizer:** Tampa SEO and Digital Marketing Meetup with Steve Scott
+- **Attendees:** 6
 - **Price:** Free
 - **Found on:** meetup
 - **Best for:** local_business_owner, growing_entrepreneur
-- **Link:** https://www.meetup.com/rga-networking-professional-business-networking/events/313356683/
+- **Link:** https://www.meetup.com/seo-training-tampa/events/313420360/
 
-### Tuesday Business Professionals Networking  (Score: 8/10) *(Previously Seen)*
+### Carrollwood Networking Lunch  ~ All Welcome~  (Score: 8/10) *(Previously Seen)*
 
-- **Status:** Seen 1x since 2026-03-04
-- **Why:** This weekly networking event is in Lakeland and targets business professionals, making it a strong fit for connecting with local business owners and growing entrepreneurs.
-- **Date:** Tuesday 10 March 2026 from 08:00-09:30 EDT Tue, 10 Mar at 08:00 EDT
-- **Location:** Central Florida Speech and Hearing Center, 3020 Lakeland Highlands Rd, Lakeland, FL, United States
-- **Organizer:** 
-- **Attendees:** 1
-- **Price:** See event
-- **Found on:** Facebook
-- **Best for:** local_business_owner, growing_entrepreneur
-- **Link:** https://www.facebook.com/events/779226221228369/
-
-### Networking - A Small Business Connect  (Score: 8/10) *(Previously Seen)*
-
-- **Status:** Seen 1x since 2026-03-04
-- **Why:** This event is specifically for small business owners and entrepreneurs to connect and build relationships, making it a strong fit for our target avatars.
-- **Date:** Tuesday, March 24, 2026 at 4:00 PM CDT Tue, Mar 24 at 4:00 PM CDT
+- **Status:** Seen 1x since 2026-03-06
+- **Why:** The Carrollwood Networking Lunch seems like a strong fit for local business owners and growing entrepreneurs looking to build relationships and generate referrals.
+- **Date:** 2026-03-11T15:30:00.000Z
 - **Location:** 
-- **Organizer:** 
-- **Attendees:** 3
-- **Price:** See event
-- **Found on:** Facebook
-- **Best for:** local_business_owner, growing_entrepreneur
-- **Link:** https://www.facebook.com/events/1177557224504782/
-
-### General Business Networking - Lakeland (Score: 7/10) *(Previously Seen)*
-
-- **Status:** Seen 2x since 2026-02-27
-- **Why:** General business networking in Lakeland is likely to attract some of our target avatars, especially those just starting out or looking to grow.
-- **Date:** 2026-03-18T22:00:00.000Z
-- **Location:** 
-- **Organizer:** Strive Networking
-- **Attendees:** 1
-- **Price:** $17.99
+- **Organizer:** RGA Networking Professional Business Networking
+- **Attendees:** 6
+- **Price:** Free
 - **Found on:** meetup
 - **Best for:** local_business_owner, growing_entrepreneur
-- **Link:** https://www.meetup.com/strive-networking/events/312395057/
+- **Link:** https://www.meetup.com/rga-networking-professional-business-networking/events/313432036/
 
-### Miami Small Business Expo 2026 (Score: 7/10) *(Previously Seen)*
+### OWIB Orlando Women in Business Winter Park (Score: 8/10) *(Previously Seen)*
 
-- **Status:** Seen 1x since 2026-02-27
-- **Why:** A small business expo in Miami could be valuable, but the distance lowers the score.
-- **Date:** Tuesday, March 10, 2026 at 10:00 AM – 5:00 PM EDT Tue, Mar 10 at 10:00 AM EDT
-- **Location:** Miami Airport Convention Center
-- **Organizer:** 
-- **Attendees:** 25
-- **Price:** See event
-- **Found on:** Facebook
-- **Best for:** local_business_owner, growing_entrepreneur, female_founder
-- **Link:** https://www.facebook.com/events/722876147497071/
+- **Status:** Seen 2x since 2026-03-04
+- **Why:** This Orlando Women in Business event is a strong fit for our female founder avatar and could also attract growing entrepreneurs and local business owners.
+- **Date:** 2026-03-19T15:30:00.000Z
+- **Location:** 
+- **Organizer:** OWIB- Orlando Women in Business Networking
+- **Attendees:** 4
+- **Price:** Free
+- **Found on:** meetup
+- **Best for:** female_founder, growing_entrepreneur, local_business_owner
+- **Link:** https://www.meetup.com/owib-orlando-women-in-business-networking/events/313628436/
 
----
+### Orlando Entrepreneurs Networking Mixer (Score: 8/10) *(Previously Seen)*
 
-## Worth Watching — Coming Up Later
-
-*These scored 8/10 or higher but are beyond the next 3 weeks (or don't have a confirmed date yet). Put them on your radar.*
-
-### Prosper & Flourish: Women in Business Networking (Score: 8/10)
-
-- **Why:** The focus on women in business and the location in Orlando make this a strong networking opportunity.
-- **Date:** Tuesday 7 April 2026 from 09:00-11:00 EDT Tue, 7 Apr at 09:00 EDT
-- **Location:** Marketplace at Avalon Park, 3801 Avalon Park East Blvd., Orlando, FL, United States
-- **Organizer:** 
-- **Attendees:** 1
-- **Price:** See event
-- **Found on:** Facebook
-- **Best for:** female_founder, local_business_owner, growing_entrepreneur
-- **Link:** https://www.facebook.com/events/586866274504204/
+- **Status:** Seen 1x since 2026-03-06
+- **Why:** This Orlando Entrepreneurs Networking Mixer is designed for ambitious entrepreneurs and business owners, making it a strong fit for those avatars.
+- **Date:** 2026-03-26T22:00:00.000Z
+- **Location:** 
+- **Organizer:** Orlando Networking And Business Strategies Meetup Group
+- **Attendees:** 14
+- **Price:** Free
+- **Found on:** meetup
+- **Best for:** growing_entrepreneur, local_business_owner
+- **Link:** https://www.meetup.com/meetup-group-udsnxyci/events/313500188/
