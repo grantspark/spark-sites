@@ -29,3 +29,25 @@ node_modules/
 
 # Main Branch migration backups
 .mb/backups/
+# Main Branch local Claude wiring
+.claude/worktrees/
+.claude/skills/mb-ads
+.claude/skills/mb-bet
+.claude/skills/mb-end
+.claude/skills/mb-help
+.claude/skills/mb-organic
+.claude/skills/mb-pull
+.claude/skills/mb-setup
+.claude/skills/mb-site
+.claude/skills/mb-skill-brief-draft
+.claude/skills/mb-skill-concept
+.claude/skills/mb-skill-review
+.claude/skills/mb-start
+.claude/skills/mb-status
+.claude/skills/mb-think
+.claude/skills/mb-update
+.claude/skills/mb-vsl
+.claude/skills/mb-wiki
+
+# Main Branch local status marker
+.mb/last-status-seen.json
